@@ -1,6 +1,6 @@
 #VARIABLES
 
-#NAME = so_long.a
+NAME = so_long
 
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
@@ -8,7 +8,9 @@ CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -f
 #AR = ar rcs
 EXEC = test
-MLXDIR = minilibx/mlx
+MLXDIR = includes/mlx/
+LIBFT = libft.a
+LDIR = includes/libft/
 
 #COLORS
 LRED = \033[91m
@@ -19,43 +21,40 @@ LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
 #SOURCES
-SRC = 
-SRCBON = 
+SRC = so_long.c
+#SRCBON = 
 
-#OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 #OBJBON = $(SRCBON:.c=.o)
-%.o: %.c
+
+.c.o :
 	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 #$(V).SILENT:
 
-all:	$(NAME)
+all:	$(LDIR)/$(LIBFT) $(NAME)
 
-$(NAME):	$(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME):	$(OBJ) $(SRC)
+	cp $(LDIR)$(LIBFT) $(NAME)
+	@echo "$(LGREEN)...and copied !$(DEF_COLOR)"
+	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	@echo "$(LGREEN)Compilation mlx complete !$(DEF_COLOR)"
 #	$(AR) $(NAME) $(OBJ)
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
-# test:
-# 	clear
-# 	$(CC) $(CFLAGS) $(EXEC) $(SRC) main.c
-# 	@echo "$(LMAGENTA)Voici le résultat tests$(DEF_COLOR)"
-# 	./$(EXEC)
-# 	$(RM) $(EXEC)
-
-# bonus:
-# 	clear
-# 	$(CC) $(CFLAGS) $(EXEC) $(SRCBON) main_bonus.c
-# 	@echo "$(LMAGENTA) Voici le résultat bonus$(DEF_COLOR)"
-# 	./$(EXEC)
-# 	$(RM) $(EXEC)
+$(LDIR)/$(LIBFT):
+	make -C $(LDIR)
+	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(LDIR)*.o
 	@echo "$(LCYAN)Objects files cleaned !$(DEF_COLOR)"
 
 fclean:	clean
+	$(RM) $(LDIR)$(LIBFT)
 	$(RM) $(EXEC)
+	$(RM) *.o
 	@echo "$(LCYAN)Executables files cleaned !$(DEF_COLOR)"
 
 re:	fclean all
