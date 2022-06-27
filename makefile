@@ -21,7 +21,7 @@ LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
 #SOURCES
-SRC = so_long.c
+SRC = so_long.c newgame.c
 #SRCBON = 
 
 OBJ = $(SRC:.c=.o)
@@ -35,10 +35,8 @@ OBJ = $(SRC:.c=.o)
 all:	$(LDIR)/$(LIBFT) $(NAME)
 
 $(NAME):	$(OBJ) $(SRC)
-	cp $(LDIR)$(LIBFT) $(NAME)
-	@echo "$(LGREEN)...and copied !$(DEF_COLOR)"
-	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-	@echo "$(LGREEN)Compilation mlx complete !$(DEF_COLOR)"
+	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LDIR)$(LIBFT)
+	@echo "$(LGREEN)MLX ready !$(DEF_COLOR)"
 #	$(AR) $(NAME) $(OBJ)
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
