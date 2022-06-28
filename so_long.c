@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 11:19:13 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:05:21 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,19 @@ int	main(int argc, char **argv)
 	int	x;
 	
 	//valider carte
+	
 	img.lines = 0;
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		printf("%s", "Erreur FD");
+		exit (1);
+	}
 	while (get_next_line(fd))
 		img.lines++;
 	close(fd);
 	fd = open(argv[1], O_RDONLY);
-	img.map = (char **)malloc(sizeof(char *) * img.lines);
+	img.map = (char **)malloc(sizeof(char *) * img.lines + 1);
 	x = 0;
 	if (argc == 2)
 	{
@@ -42,7 +48,6 @@ int	main(int argc, char **argv)
 			x++;
 		}
 	}
-	printf("%s", "OK #1");
 
 	newgame(&img);
 	free (img.map);

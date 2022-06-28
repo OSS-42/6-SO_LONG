@@ -20,7 +20,7 @@ LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
 #SOURCES
-SRC = so_long.c newgame.c
+SRC = so_long.c newgame.c init_level.c
 #SRCBON = 
 
 OBJ = $(SRC:.c=.o)
