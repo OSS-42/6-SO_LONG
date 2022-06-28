@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/27 16:35:14 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:44:52 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,64 @@ int	key_hook(int keycode, t_data *img)
 
 void	newgame(t_data *img)
 {
-	char	*wall_path = "/Users/ewurstei/Documents/42-so_long/assets/tile_wall.xpm";
+	t_images	level_1;
 	int	img_width;
 	int	img_height;
 	int	x;
 	int	y;
-	int	i;
-	int	h;
-	int	l;
+	int	img_x;
+	int	img_y;
+	char	*wall_left = "/Users/ewurstei/Documents/42-so_long/assets/tile_wall_window_left.xpm";
+	char	*wall_right = "/Users/ewurstei/Documents/42-so_long/assets/tile_wall_window_right.xpm";
+	char	*wall_top =  "/Users/ewurstei/Documents/42-so_long/assets/tile_wall_window_top.xpm";
+	char	*corner_1 = "/Users/ewurstei/Documents/42-so_long/assets/tile_wall_corner_1.xpm";
+	char	*corner_2 = "/Users/ewurstei/Documents/42-so_long/assets/tile_wall_corner_2.xpm";
+	// char	*corner_3;
+	// char	*corner_4;
 	
 	img->mlx = mlx_init();
 	img->lenght = ft_strlen(img->map[0]);
-	img->mlx_win = mlx_new_window(img->mlx, img->lenght * 64, (img->lines * 64), "A Day in 42 Quebec");
+	printf("lenght : %d\n", img->lenght);
+	printf("string: %s", img->map[0]);
+	img->mlx_win = mlx_new_window(img->mlx, (img->lenght - 2 * 64), (img->lines * 64) + 25, "A Day in 42 Quebec");
 
-
-	img->img = mlx_xpm_file_to_image(img->mlx, wall_path, &img_width, &img_height);
-	i = 0;
+	level_1.wall_right = mlx_xpm_file_to_image(img->mlx, wall_right, &img_width, &img_height);
+	level_1.wall_left = mlx_xpm_file_to_image(img->mlx, wall_left, &img_width, &img_height);
+	level_1.wall_top = mlx_xpm_file_to_image(img->mlx, wall_top, &img_width, &img_height);
+	level_1.corner_1 = mlx_xpm_file_to_image(img->mlx, corner_1, &img_width, &img_height);
+	level_1.corner_2 = mlx_xpm_file_to_image(img->mlx, corner_2, &img_width, &img_height);
 	x = 0;
-	h = 0;
-	l = 0;
-	while (i < img->lines)
+	img_x = 0;
+	img_y = 25;
+	while (x < img->lines)
 	{
 		y = 0;
-		while (img->map[x][y++] != '\n')
+		if (x == 0 && y == 0 && img->map[x][y] == '1')
+		{
+			mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.corner_1, img_x, img_y);
+			img_x = img_x + 64;
+			y++;
+		}
+		while (y++ < (img->lenght - 3))
 		{
 			if (img->map[x][y] == '1')
 			{
-				printf("Ok\n");
-				mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, h, l);
-			l = l + 64;
+				mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.wall_top, img_x, img_y);
+				img_x = img_x + 64;
 			}
 		}
-		i++;
+		y++;
+		printf("y: %d\n", y);
+		printf("char: %c\n", img->map[x][y]);
+		if (x == 0 && img->map[x][y] == '1')
+		{
+			printf("%d\n", img->lenght);
+			printf("%d", y);
+			mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.corner_2, img_x, img_y);
+		}
+		img_x = 0;
+		img_y = img_y + 64;
+		x++;
 	}
 	
 	mlx_string_put(img->mlx, img->mlx_win, 0, 0, 0x00FF0000, "Moves :");

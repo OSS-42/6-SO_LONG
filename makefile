@@ -7,7 +7,6 @@ CFLAGS = -g -Wall -Werror -Wextra
 #CFLAGSTEST = -o
 RM = rm -f
 #AR = ar rcs
-EXEC = test
 MLXDIR = includes/mlx/
 LIBFT = libft.a
 LDIR = includes/libft/
@@ -51,7 +50,7 @@ clean:
 
 fclean:	clean
 	$(RM) $(LDIR)$(LIBFT)
-	$(RM) $(EXEC)
+	$(RM) $(NAME)
 	$(RM) *.o
 	@echo "$(LCYAN)Executables files cleaned !$(DEF_COLOR)"
 

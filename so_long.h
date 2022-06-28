@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/27 16:23:48 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 10:13:29 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 # include "includes/mlx/mlx.h"
 # include "includes/libft/libft.h"
 # include <stdio.h>
+
+typedef struct s_images
+{
+	char	*corner_1;
+	char	*corner_2;
+	char	*corner_3;
+	char	*corner_4;
+	char	*wall_left;
+	char	*wall_right;
+	char	*wall_top;
+}	t_images;
 
 typedef struct s_data
 {
