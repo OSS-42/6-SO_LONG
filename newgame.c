@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 10:44:52 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:21:39 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ void	newgame(t_data *img)
 	// char	*corner_3;
 	// char	*corner_4;
 	
+	printf("%s", "OK #2");
 	img->mlx = mlx_init();
 	img->lenght = ft_strlen(img->map[0]);
-	printf("lenght : %d\n", img->lenght);
-	printf("string: %s", img->map[0]);
-	img->mlx_win = mlx_new_window(img->mlx, (img->lenght - 2 * 64), (img->lines * 64) + 25, "A Day in 42 Quebec");
+	//printf("lenght : %d\n", img->lenght);
+	//printf("string: %s", img->map[0]);
+	img->mlx_win = mlx_new_window(img->mlx, (img->lenght * 64), (img->lines * 64) + 25, "A Day in 42 Quebec");
 
 	level_1.wall_right = mlx_xpm_file_to_image(img->mlx, wall_right, &img_width, &img_height);
 	level_1.wall_left = mlx_xpm_file_to_image(img->mlx, wall_left, &img_width, &img_height);
@@ -61,6 +62,7 @@ void	newgame(t_data *img)
 	x = 0;
 	img_x = 0;
 	img_y = 25;
+	printf("%s", "OK #3");
 	while (x < img->lines)
 	{
 		y = 0;
@@ -70,7 +72,7 @@ void	newgame(t_data *img)
 			img_x = img_x + 64;
 			y++;
 		}
-		while (y++ < (img->lenght - 3))
+		while (y++ < (img->lenght - 2))
 		{
 			if (img->map[x][y] == '1')
 			{
@@ -79,12 +81,12 @@ void	newgame(t_data *img)
 			}
 		}
 		y++;
-		printf("y: %d\n", y);
-		printf("char: %c\n", img->map[x][y]);
+		// printf("y: %d\n", y);
+		// printf("char: %c\n", img->map[x][y]);
 		if (x == 0 && img->map[x][y] == '1')
 		{
-			printf("%d\n", img->lenght);
-			printf("%d", y);
+			// printf("%d\n", img->lenght);
+			// printf("%d", y);
 			mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.corner_2, img_x, img_y);
 		}
 		img_x = 0;

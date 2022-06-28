@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 10:47:15 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 11:19:13 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int argc, char **argv)
 			x++;
 		}
 	}
+	printf("%s", "OK #1");
 
 	newgame(&img);
 	free (img.map);
