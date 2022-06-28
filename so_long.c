@@ -6,21 +6,20 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 13:05:21 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:24:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <fcntl.h>
 
+	//valider carte
 
 int	main(int argc, char **argv)
 {
 	t_data	img;
 	int	fd;
 	int	x;
-	
-	//valider carte
 	
 	img.lines = 0;
 	fd = open(argv[1], O_RDONLY);
@@ -48,7 +47,6 @@ int	main(int argc, char **argv)
 			x++;
 		}
 	}
-
 	newgame(&img);
 	free (img.map);
 	close (fd);

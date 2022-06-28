@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 15:03:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/28 17:23:03 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "includes/libft/libft.h"
 # include <stdio.h>
 
-typedef struct s_images
+typedef struct s_level
 {
 	void	*corner_1;
 	void	*corner_2;
@@ -35,7 +35,7 @@ typedef struct s_images
 	int		y;
 	int		img_x;
 	int		img_y;
-}	t_images;
+}	t_level;
 
 typedef struct s_data
 {
@@ -47,16 +47,27 @@ typedef struct s_data
 	int		height;
 	int		lines;
 	int		lenght;
+	int		moves;
+	int		x;
+	int		y;
+	int		img_x;
+	int		img_y;
+	void	*player;
 
 }	t_data;
 
-int		endgame(t_data *img);
-int		key_hook(int keycode, t_data *img);
-void	init_level(t_data *img);
-void	draw_map(t_data *img, t_images level_1);
-void	top_line(t_data *img, t_images level_1);
-void	middle_line(t_data *img, t_images level_1);
-void	bottom_line(t_data *img, t_images level_1);
 void	newgame(t_data *img);
+void	init_level(t_data *img);
+void	draw_map(t_data *img, t_level level_1);
+void	top_line(t_data *img, t_level level_1);
+void	middle_line(t_data *img, t_level level_1);
+void	bottom_line(t_data *img, t_level level_1);
+void	init_player(t_data *img);
+int		key_hook(int keycode, t_data *img);
+void	go_up(t_data *img);
+void	go_down(t_data *img);
+void	go_left(t_data *img);
+void	go_right(t_data *img);
+int		endgame(t_data *img);
 
 #endif
