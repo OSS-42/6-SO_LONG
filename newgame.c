@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 17:06:45 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/29 14:12:39 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,10 @@ void	newgame(t_data *img)
 	img->mlx = mlx_init();
 	img->lenght = ft_strlen(img->map[0]);
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
-			(img->lines * 64) + 25, "A Day in 42 Quebec");
+			(img->lines * 64 + 50), "A Day in 42 Quebec");
+	search_collectibles(img);
 	init_level(img);
 	init_player(img);
-	mlx_string_put(img->mlx, img->mlx_win, 0, 0, 0x00FF0000, "Moves :");
-	mlx_string_put(img->mlx, img->mlx_win, 80, 0, 0x00FF0000, ft_itoa(img->moves));
-	mlx_string_put(img->mlx, img->mlx_win, 500, 0, 0x6922ff, "Collectibles :");
-	mlx_string_put(img->mlx, img->mlx_win, 1000, 0, 0x05878a, "Life :");
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
 	mlx_key_hook(img->mlx_win, key_hook, img);
 	mlx_loop(img->mlx);

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 17:23:03 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:08:10 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,22 @@ typedef struct s_data
 	int		lines;
 	int		lenght;
 	int		moves;
-	int		x;
-	int		y;
-	int		img_x;
-	int		img_y;
+	int		collectibles;
+	int		total_c;
+	int		player_x;
+	int		player_y;
+	int		player_img_x;
+	int		player_img_y;
 	void	*player;
 
 }	t_data;
 
 void	newgame(t_data *img);
 void	init_level(t_data *img);
+void	init_level_walls(t_data *img, t_level level_1);
+void	init_level_corners(t_data *img, t_level level_1);
 void	draw_map(t_data *img, t_level level_1);
+int		search_collectibles(t_data *img);
 void	top_line(t_data *img, t_level level_1);
 void	middle_line(t_data *img, t_level level_1);
 void	bottom_line(t_data *img, t_level level_1);

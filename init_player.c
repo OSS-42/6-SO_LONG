@@ -6,43 +6,76 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 17:43:58 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/06/29 15:00:33 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_player(t_data *img)
+//x et y dans l'image sont inversés dans un tableau.
+//donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x
+//attention au 0 dans les 2 cas.
+
+int	search_collectibles(t_data *img)
 {
-	int	img_width;
-	int	img_height;
 	int	x;
 	int	y;
 
 	x = 0;
-	img->moves = 0;
+	img->total_c = 0;
 	while (x < img->lines - 1)
 	{
-		if (ft_strchr(img->map[x++], 'P'))
+		y = 0;
+		while (img->map[x][y])
 		{
-			y = 0;
-			while(img->map[x][y])
-			{
-				if (img->map[x][y++] == 'P')
-					break ;
-				img->x++;
-			}
+			if (img->map[x][y] == 'C')
+				img->total_c++;
+			y++;
 		}
-		img->y++;		
+		x++;
 	}
-	printf("%d\n", img->x);
-	printf("%d\n", img->y);
-	// img->img_x = 64;
-	// img->img_y = 25;
-	//img->x = 1;
-	//img->y = 0;
-	img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso.xpm",
+	return (0);
+}
+
+static int	search_start(char *string, char c)
+{
+	int	x;
+
+	x = 0;
+	while (string[x])
+	{
+		if (string[x] == c)
+			return (x);
+		x++;
+	}
+	return (0);
+}
+
+void	init_player(t_data *img)
+{
+	int	img_width;
+	int	img_height;
+
+	img->player_y = 1;
+	img->collectibles = 0;
+	img->moves = 0;
+	while (img->player_y < img->lines - 1)
+	{
+		if (search_start(img->map[img->player_y], 'P') != 0)
+		{
+			img->player_x = 1;
+			while (img->map[img->player_y][img->player_x])
+			{
+				if (img->map[img->player_y][img->player_x] == 'P')
+					break ;
+				img->player_x++;
+			}
+			break ;
+		}
+		img->player_y++;
+	}
+	img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
-		img->x * 64, img->y * 64);
+		img->player_x * 64, img->player_y * 64 + 50);
 }
