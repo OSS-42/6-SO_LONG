@@ -43,6 +43,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*mlx_win;
 	char	**map;
+	char	*argv;
 	int		width;
 	int		height;
 	int		lines;
