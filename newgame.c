@@ -12,6 +12,23 @@
 
 #include "so_long.h"
 
+void	errors(int error_code)
+{
+	if (error_code == 1)
+		printf("%s\n%s\n", "Error", "Il n'y a pas de carte");
+	if (error_code == 2)
+		printf("%s\n%s\n", "Error", "Carte trop petite");
+	if (error_code == 3)
+		printf("%s\n%s\n", "Error", "Caractère manquant ou mauvais caractère");
+	if (error_code == 4)
+		printf("%s\n%s\n", "Error", "Murs non valides (haut/bas)");
+	if (error_code == 5)
+		printf("%s\n%s\n", "Error", "Murs non valides (gauche/droite)");
+	if (error_code == 6)
+		printf("%s\n%s\n", "Error", "La carte n'est pas un rectangle parfait");
+	exit(1);
+}
+
 int	endgame(t_data *img)
 {
 	mlx_destroy_window(img->mlx, img->mlx_win);
@@ -45,6 +62,8 @@ void	newgame(t_data *img)
 	search_collectibles(img);
 	init_level(img);
 	init_player(img);
+	if (img->enemy == 1)
+		init_enemy(img);
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
 	mlx_key_hook(img->mlx_win, key_hook, img);
 	mlx_loop(img->mlx);

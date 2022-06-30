@@ -39,11 +39,7 @@ void	check_map_rectangle(t_data *img)
 	while (++x < img->lines - 1)
 	{
 		if (ft_strlen(img->map[x] != firstlen))
-		{
-			printf("%s\n", "Error");
-			printf("%s\n", "la carte n'est pas un rectangle parfait");
-			exit (1);
-		}
+			errors(6);
 	}
 }
 
@@ -53,31 +49,25 @@ void	check_map_walls(t_data *img)
 	int	y;
 
 	x = 0;
-	while (x < img->lines - 1)
+	while (x++ < img->lines - 1)
 	{
 		if (x == 0 || x == img->lines - 1)
 		{
 			y = 0;
 			while (img->map[x][y])
 			{
-				if (img->map[x][y] != '1')
-				{
-					printf("%s\n%s\n", "Error", "Mur non valide (haut ou bas)");
-					exit (0);
-				}
-				y++;
+				if (img->map[x][y] == '1')
+					y++;
+				else
+					errors(4);
 			}
 		}
 		else if (x > 0 && x < img->lines - 2)
 		{
-			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
-			{
-				printf("%s\n%s\n", "Error", "Mur non valide (gauche ou droite)");
-				exit (1);
-			}
+			if (img->map[x][0] == '1' || img->map[x][img->lenght - 2] == '1')
+				errors(5);
 		}
 	}
-	x++;
 }
 
 void	check_map_char(t_data *img)
@@ -91,12 +81,10 @@ void	check_map_char(t_data *img)
 		y = 0;
 		while (img->map[x][y])
 		{
-			if (isinset(img->map[x], "01CEP") != 1)
-			{
-				printf("%s\n", "Error");
-				printf("Caractère manquant ou mauvais caractère");
-				exit (1);
-			}
+			if (isinset(img->map[x], "01CEPZ") != 1)
+				errors(3);
+			if (ft_strchr(img->map[x], 'Z' != NULL))
+				img->enemy = 1;
 		}
 	}
 }
@@ -104,17 +92,9 @@ void	check_map_char(t_data *img)
 void	check_map(t_data *img)
 {
 	if (img->map[0][0] == '\0')
-	{
-		printf("%s\n", "Error");
-		printf("%s\n", "Il n'y a pas de carte");
-		exit (1);
-	}
+		errors(1);
 	if (img->lenght < 5 || img->lines < 3)
-	{
-		printf("%s\n", "Error");
-		printf("%s", "Carte trop petite : elle ne peut pas contenir 01CEP");
-		exit (1);
-	}
+		errors(2);
 	check_map_walls(img);
 	check_map_char(img);
 	check_map_rectangle(img);

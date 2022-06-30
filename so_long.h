@@ -53,13 +53,17 @@ typedef struct s_data
 	int		total_c;
 	int		player_x;
 	int		player_y;
-	int		player_img_x;
-	int		player_img_y;
+	//int		player_img_x;
+	//int		player_img_y;
 	void	*player;
-
+	int		enemy_x;
+	int		enemy_y;
+	int		enemy;
+	void	*enemy;
 }	t_data;
 
 void	newgame(t_data *img);
+void	errors(int error_code);
 void	init_level(t_data *img);
 void	init_level_walls(t_data *img, t_level level_1);
 void	init_level_corners(t_data *img, t_level level_1);
@@ -80,6 +84,11 @@ void	go_up(t_data *img);
 void	go_down(t_data *img);
 void	go_left(t_data *img);
 void	go_right(t_data *img);
+void	init_enemy(t_data *img);
+void	enemy_go_up(t_data *img);
+void	enemy_go_down(t_data *img);
+void	enemy_go_left(t_data *img);
+void	enemy_go_right(t_data *img);
 int		endgame(t_data *img);
 
 #endif

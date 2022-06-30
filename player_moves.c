@@ -37,6 +37,7 @@ void	go_up(t_data *img)
 		mlx_clear_window(img->mlx, img->mlx_win);
 		init_level(img);
 		img->player_y = img->player_y - 1;
+		enemy_go_down(img);
 		print_moves(img);
 	}	
 }
@@ -58,6 +59,7 @@ void	go_down(t_data *img)
 		mlx_clear_window(img->mlx, img->mlx_win);
 		init_level(img);
 		img->player_y = img->player_y + 1;
+		enemy_go_up(img);
 		print_moves(img);
 	}	
 }
@@ -84,6 +86,7 @@ void	go_left(t_data *img)
 		img->player_x = img->player_x - 1;
 		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_left.xpm",
 				&img_width, &img_height);
+		enemy_go_right(img);
 		print_moves(img);
 	}	
 }
@@ -110,6 +113,7 @@ void	go_right(t_data *img)
 		img->player_x = img->player_x + 1;
 		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
 				&img_width, &img_height);
+		enemy_go_left(img);
 		print_moves(img);
 	}	
 }
