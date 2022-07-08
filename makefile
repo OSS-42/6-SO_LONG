@@ -20,7 +20,8 @@ LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
 #SOURCES
-SRC = so_long.c newgame.c init_assets.c init_player.c player_moves.c draw_map.c checkmap.c init_enemy.c enemy_moves.c
+SRC = so_long.c newgame.c init_assets.c init_player.c player_moves.c draw_map.c \
+		check_map.c init_enemy.c enemy_moves.c
 #SRCBON = 
 
 OBJ = $(SRC:.c=.o)

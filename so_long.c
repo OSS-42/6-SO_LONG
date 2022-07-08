@@ -6,12 +6,21 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/28 17:24:20 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:10:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <fcntl.h>
+
+static void	check_fd(int fd)
+{
+	if (fd < 0)
+	{
+		printf("%s\n%s\n", "Error", "Probleme FD");
+		exit (1);
+	}
+}
 
 void	check_map_name(t_data *img)
 {
@@ -28,12 +37,14 @@ void	check_map_name(t_data *img)
 	}
 }
 
-void	map_to_array(t_data *img, int fd)
+void	map_to_array(t_data *img)
 {
 	int	x;
+	int	fd;
 
 	img->lines = 0;
 	fd = open(img->argv, O_RDONLY);
+	check_fd(fd);
 	while (get_next_line(fd))
 			img->lines++;
 	close(fd);
@@ -52,30 +63,18 @@ void	map_to_array(t_data *img, int fd)
 	}
 }
 
-static void	check_fd(int fd)
-{
-	if (fd < 0)
-	{
-		printf("%s", "Erreur FD");
-		exit (1);
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	img;
-	int		fd;
 
 	if (argc != 2)
 	{
-		printf("%s\n", "Error");
-		printf("%s\n", "Mauvais nombre d'arguments");
+		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
 		exit (1);
 	}
 	img.argv = argv[1];
 	check_map_name(&img);
-	check_fd(fd);
-	map_to_array(&img, fd);
+	map_to_array(&img);
 	check_map(&img);
 	newgame(&img);
 	free (img.map);

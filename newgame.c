@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/29 14:12:39 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:10:44 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	newgame(t_data *img)
 	search_collectibles(img);
 	init_level(img);
 	init_player(img);
-	if (img->enemy == 1)
+	if (img->nbr_enemy == 1)
 		init_enemy(img);
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
 	mlx_key_hook(img->mlx_win, key_hook, img);

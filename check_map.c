@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/30 10:29:14 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:16:39 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 static int	isinset(char *s1, char *set)
 {
 	int	x;
-	int	y;
 	int	len;
 
 	x = 0;
 	len = ft_strlen(set);
 	while (x < len)
 	{
-		if (ft_strchr(s1, set[x] == NULL))
+		if (ft_strchr(s1, set[x]) == NULL)
 			return (0);
 		x++;
 	}
@@ -31,14 +30,14 @@ static int	isinset(char *s1, char *set)
 
 void	check_map_rectangle(t_data *img)
 {
-	int	firstlen;
-	int	x;
+	size_t	firstlen;
+	int		x;
 
 	x = 0;
 	firstlen = ft_strlen(img->map[x]);
 	while (++x < img->lines - 1)
 	{
-		if (ft_strlen(img->map[x] != firstlen))
+		if (ft_strlen(img->map[x]) != firstlen)
 			errors(6);
 	}
 }
@@ -83,8 +82,8 @@ void	check_map_char(t_data *img)
 		{
 			if (isinset(img->map[x], "01CEPZ") != 1)
 				errors(3);
-			if (ft_strchr(img->map[x], 'Z' != NULL))
-				img->enemy = 1;
+			if (ft_strchr(img->map[x], 'Z') != NULL)
+				img->nbr_enemy = 1;
 		}
 	}
 }
