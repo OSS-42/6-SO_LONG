@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/29 14:57:44 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 11:02:41 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 static void	print_moves(t_data *img)
 {
 	img->moves = img->moves + 1;
+	mlx_clear_window(img->mlx, img->mlx_win);
+	init_level(img);
 	printf("%d\n", img->moves);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
 		img->player_x * 64, img->player_y * 64 + 50);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
+		img->enemy_x * 64, img->player_y * 64 + 50);
 }
 
 void	go_up(t_data *img)
@@ -32,12 +36,11 @@ void	go_up(t_data *img)
 		if (img->map[img->player_y - 1][img->player_x] == 'E')
 		{
 			if (img->collectibles == img->total_c)
-				exit (0);
+				endgame(img);
 		}
-		mlx_clear_window(img->mlx, img->mlx_win);
-		init_level(img);
 		img->player_y = img->player_y - 1;
-		enemy_go_down(img);
+		if (img->enemy > 0)
+			enemy_go_down(img);
 		print_moves(img);
 	}	
 }
@@ -54,12 +57,11 @@ void	go_down(t_data *img)
 		if (img->map[img->player_y + 1][img->player_x] == 'E')
 		{
 			if (img->collectibles == img->total_c)
-				exit (0);
+				endgame(img);
 		}
-		mlx_clear_window(img->mlx, img->mlx_win);
-		init_level(img);
 		img->player_y = img->player_y + 1;
-		enemy_go_up(img);
+		if (img->enemy > 0)
+				enemy_go_up(img);
 		print_moves(img);
 	}	
 }
@@ -79,14 +81,13 @@ void	go_left(t_data *img)
 		if (img->map[img->player_y][img->player_x - 1] == 'E')
 		{
 			if (img->collectibles == img->total_c)
-				exit (0);
+				endgame(img);
 		}
-		mlx_clear_window(img->mlx, img->mlx_win);
-		init_level(img);
 		img->player_x = img->player_x - 1;
 		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_left.xpm",
 				&img_width, &img_height);
-		enemy_go_right(img);
+		if (img->enemy > 0)
+				enemy_go_right(img);
 		print_moves(img);
 	}	
 }
@@ -106,14 +107,13 @@ void	go_right(t_data *img)
 		if (img->map[img->player_y][img->player_x + 1] == 'E')
 		{
 			if (img->collectibles == img->total_c)
-				exit (0);
+				endgame(img);
 		}
-		mlx_clear_window(img->mlx, img->mlx_win);
-		init_level(img);
 		img->player_x = img->player_x + 1;
 		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
 				&img_width, &img_height);
-		enemy_go_left(img);
+		if (img->enemy > 0)
+				enemy_go_left(img);
 		print_moves(img);
 	}	
 }

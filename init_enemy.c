@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/30 15:22:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 11:13:26 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	init_enemy(t_data *img)
 	int	img_width;
 	int	img_height;
 
-	img->enemy_y = 1;
+	img->enemy_y = 0;
 	while (img->enemy_y < img->lines - 1)
 	{
 		if (search_start(img->map[img->enemy_y], 'Z') != 0)
 		{
-			img->enemy_x = 1;
+			img->enemy_x = 0;
 			while (img->map[img->enemy_y][img->enemy_x])
 			{
 				if (img->map[img->enemy_y][img->enemy_x] == 'Z')
@@ -55,4 +55,6 @@ void	init_enemy(t_data *img)
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
 		img->enemy_x * 64, img->enemy_y * 64 + 50);
+	printf("enemy x start : %d\n", img->enemy_x);
+	printf("enemy y start : %d\n", img->enemy_y);
 }

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/07 22:16:39 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 09:28:54 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	isinset(char *s1, char *set)
 	int	len;
 
 	x = 0;
-	len = ft_strlen(set);
-	while (x < len)
+	len = ft_strlen(s1);
+	while (x < len - 1)
 	{
-		if (ft_strchr(s1, set[x]) == NULL)
+		if (ft_strchr(set, s1[x]) == NULL)
 			return (0);
 		x++;
 	}
@@ -48,48 +48,43 @@ void	check_map_walls(t_data *img)
 	int	y;
 
 	x = 0;
-	while (x++ < img->lines - 1)
+	while (x < img->lines - 1)
 	{
 		if (x == 0 || x == img->lines - 1)
 		{
 			y = 0;
-			while (img->map[x][y])
-			{
-				if (img->map[x][y] == '1')
-					y++;
-				else
-					errors(4);
-			}
+			if (img->map[x][y] == '1')
+				y++;
+			else
+				errors(4);
 		}
-		else if (x > 0 && x < img->lines - 2)
+		else if (x > 0 && x < img->lines - 1)
 		{
-			if (img->map[x][0] == '1' || img->map[x][img->lenght - 2] == '1')
+			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
 				errors(5);
 		}
+		x++;
 	}
 }
 
 void	check_map_char(t_data *img)
 {
 	int	x;
-	int	y;
 
 	x = 0;
 	while (x < img->lines - 1)
 	{
-		y = 0;
-		while (img->map[x][y])
-		{
-			if (isinset(img->map[x], "01CEPZ") != 1)
-				errors(3);
-			if (ft_strchr(img->map[x], 'Z') != NULL)
-				img->nbr_enemy = 1;
-		}
+		if (isinset(img->map[x], "01CEPZ") != 1)
+			errors(3);
+		if (ft_strchr(img->map[x], 'Z') != NULL)
+			img->nbr_enemy = 1;
+		x++;
 	}
 }
 
 void	check_map(t_data *img)
 {
+	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
 		errors(1);
 	if (img->lenght < 5 || img->lines < 3)

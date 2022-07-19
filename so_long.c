@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/07 22:10:20 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 08:50:34 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,11 @@ void	check_map_name(t_data *img)
 	char	*filename;
 
 	filename = ft_strrchr(img->argv, '.');
-	while (filename)
-	{
-		if (ft_strncmp(filename, ".ber", ft_strlen(filename) != 0))
+	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
 		{
 			printf("%s\n%s\n", "Error", "Mauvais nom de fichier carte");
 			exit (1);
 		}
-	}
 }
 
 void	map_to_array(t_data *img)

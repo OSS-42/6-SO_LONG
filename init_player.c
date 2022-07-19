@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/29 15:00:33 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 11:20:58 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void	init_player(t_data *img)
 	int	img_height;
 
 	img->player_y = 1;
-	img->collectibles = 0;
-	img->moves = 0;
 	while (img->player_y < img->lines - 1)
 	{
 		if (search_start(img->map[img->player_y], 'P') != 0)
@@ -78,4 +76,6 @@ void	init_player(t_data *img)
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
 		img->player_x * 64, img->player_y * 64 + 50);
+	printf("player start x : %d\n", img->player_x);
+	printf("player start y : %d\n", img->player_y);
 }
