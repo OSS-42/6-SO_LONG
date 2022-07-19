@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/19 10:46:27 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:33:59 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,15 @@ int	key_hook(int keycode, t_data *img)
 
 void	newgame(t_data *img)
 {
+	time_t	t;
+	
 	img->mlx = mlx_init();
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64 + 50), "A Day in 42 Quebec");
 	search_collectibles(img);
 	img->moves = 0;
 	img->collectibles = 0;
+	srand((unsigned) time(&t));
 	init_level(img);
 	init_player(img);
 	if (img->nbr_enemy == 1)

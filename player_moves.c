@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/19 11:02:41 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 14:20:08 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ static void	print_moves(t_data *img)
 	printf("%d\n", img->moves);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
 		img->player_x * 64, img->player_y * 64 + 50);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
-		img->enemy_x * 64, img->player_y * 64 + 50);
+	if (img->enemy > 0)
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
+			img->enemy_x * 64, img->enemy_y * 64 + 50);
 }
 
 void	go_up(t_data *img)

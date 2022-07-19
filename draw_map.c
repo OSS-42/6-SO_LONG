@@ -6,11 +6,20 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:02:31 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/06/29 15:02:58 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:26:03 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void convert_data(t_data *img, int x, int y, unsigned color, int data)
+{
+	char	*str;
+	
+	str = ft_itoa(data);
+	mlx_string_put(img->mlx, img->mlx_win, x, y, color, str);
+	free (str);	
+}
 
 void	top_line(t_data *img, t_level level_1)
 {
@@ -39,7 +48,7 @@ void	middle_line(t_data *img, t_level level_1)
 		if (img->map[level_1.x][level_1.y] == '1')
 			mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.pilar,
 				level_1.y * 64, level_1.img_y);
-		if (img->map[level_1.x][level_1.y] == '0')
+		if (img->map[level_1.x][level_1.y] == '0' || img->map[level_1.x][level_1.y] == 'Z')
 			mlx_put_image_to_window(img->mlx, img->mlx_win, level_1.floor,
 				level_1.y * 64, level_1.img_y);
 		if (img->map[level_1.x][level_1.y] == 'E')
@@ -77,10 +86,8 @@ void	draw_map(t_data *img, t_level level_1)
 {
 	mlx_string_put(img->mlx, img->mlx_win, 0, 0, 0x00FF0000, "Moves :");
 	mlx_string_put(img->mlx, img->mlx_win, 0, 25, 0x6922ff, "Bottles :");
-	mlx_string_put(img->mlx, img->mlx_win, 80, 0, 0x00FF0000,
-		ft_itoa(img->moves));
-	mlx_string_put(img->mlx, img->mlx_win, 80, 25, 0x6922ff,
-		ft_itoa(img->collectibles));
+	convert_data(img, 80, 0, 0x00FF0000, img->moves);
+	convert_data(img, 80, 25, 0x6922ff, img->collectibles);
 	level_1.x = 0;
 	level_1.img_x = 0;
 	level_1.img_y = 50;

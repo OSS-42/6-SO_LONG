@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/19 11:13:26 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/19 13:24:22 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	search_start(char *string, char c)
 {
 	int	x;
 
-	x = 0;
+	x = 1;
 	while (string[x])
 	{
 		if (string[x] == c)
@@ -35,12 +35,12 @@ void	init_enemy(t_data *img)
 	int	img_width;
 	int	img_height;
 
-	img->enemy_y = 0;
+	img->enemy_y = 1;
 	while (img->enemy_y < img->lines - 1)
 	{
 		if (search_start(img->map[img->enemy_y], 'Z') != 0)
 		{
-			img->enemy_x = 0;
+			img->enemy_x = 1;
 			while (img->map[img->enemy_y][img->enemy_x])
 			{
 				if (img->map[img->enemy_y][img->enemy_x] == 'Z')
