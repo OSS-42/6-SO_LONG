@@ -65,9 +65,9 @@ char	*ft_linetoprint(char *string)
 
 char	*get_next_line(int fd)
 {
-	static	char *stash[257];
-	char	*line;
-	int		i;
+	static char	*stash[257];
+	char		*line;
+	int			i;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);

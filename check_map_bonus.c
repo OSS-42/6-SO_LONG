@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:52:03 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 09:46:22 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static int	isinset(char *s1, char *set)
 {
@@ -74,8 +74,10 @@ void	check_map_char(t_data *img)
 	x = 0;
 	while (x < img->lines - 1)
 	{
-		if (isinset(img->map[x], "01CEP") != 1)
+		if (isinset(img->map[x], "01CEPZ") != 1)
 			errors(3);
+		if (ft_strchr(img->map[x], 'Z') != NULL)
+			img->nbr_enemy = 1;
 		x++;
 	}
 }

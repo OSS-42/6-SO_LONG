@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:54:44 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 11:29:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # include "includes/mlx/mlx.h"
 # include "includes/libft/libft.h"
 # include <stdio.h>
@@ -56,6 +56,11 @@ typedef struct s_data
 	int		player_x;
 	int		player_y;
 	void	*player;
+	int		enemy_x;
+	int		enemy_y;
+	int		nbr_enemy;
+	void	*enemy;
+	int		random_dir;
 }	t_data;
 
 void	newgame(t_data *img);
@@ -80,6 +85,12 @@ void	go_up(t_data *img);
 void	go_down(t_data *img);
 void	go_left(t_data *img);
 void	go_right(t_data *img);
+void	init_enemy(t_data *img);
+void	random_moves(t_data *img);
+void	enemy_go_up(t_data *img);
+void	enemy_go_down(t_data *img);
+void	enemy_go_left(t_data *img);
+void	enemy_go_right(t_data *img);
 int		endgame(t_data *img);
 
 #endif

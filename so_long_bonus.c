@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 11:47:42 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 11:48:11 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <fcntl.h>
 
 static void	check_fd(t_data *img, int fd)
 {
 	char	*line;
-
+	
 	if (fd < 0)
 	{
 		printf("%s\n%s\n", "Error", "Probleme FD");
@@ -30,7 +30,7 @@ static void	check_fd(t_data *img, int fd)
 		free (line);
 		line = get_next_line(fd);
 	}
-	close(fd);
+	close (fd);
 }
 
 void	check_map_name(t_data *img)
@@ -51,9 +51,9 @@ void	map_to_array(t_data *img)
 	int		fd;
 
 	fd = open(img->argv, O_RDONLY);
-	check_fd(img, fd);
+	check_fd(img,fd);
 	fd = open(img->argv, O_RDONLY);
-	img->map = (char **)malloc(sizeof(char *) * img->lines);
+	img->map = (char **)malloc(sizeof(char *) * img->lines + 1);
 	x = 0;
 	while (1)
 	{
@@ -61,7 +61,6 @@ void	map_to_array(t_data *img)
 		if (img->map[x] == NULL)
 		{
 			free(img->map[x]);
-			close(fd);
 			break ;
 		}
 		x++;
@@ -83,5 +82,6 @@ int	main(int argc, char **argv)
 	map_to_array(&img);
 	check_map(&img);
 	newgame(&img);
+	free (img.map);
 	return (0);
 }

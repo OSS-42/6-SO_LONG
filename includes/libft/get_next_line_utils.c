@@ -60,7 +60,6 @@ char	*ft_join(char *stash, char *buffer)
 			dst[i] = stash[i];
 	while (buffer[j] != '\0')
 		dst[i++] = buffer[j++];
-	//dst[i] = '\0';
 	dst[ft_lenght(stash) + ft_lenght(buffer)] = '\0';
 	free (stash);
 	return (dst);

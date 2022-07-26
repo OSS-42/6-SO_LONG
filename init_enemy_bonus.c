@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_enemy.c                                       :+:      :+:    :+:   */
+/*   init_enemy_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/19 13:24:22 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 09:47:25 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 //x et y dans l'image sont inversés dans un tableau.
 //donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x

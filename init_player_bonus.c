@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_player.c                                      :+:      :+:    :+:   */
+/*   init_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:57:47 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 10:17:46 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 //x et y dans l'image sont inversés dans un tableau.
 //donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x
@@ -75,7 +75,7 @@ void	init_player(t_data *img)
 	img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
-		img->player_x * 64, img->player_y * 64);
+		img->player_x * 64, img->player_y * 64 + 50);
 	printf("player start x : %d\n", img->player_x);
 	printf("player start y : %d\n", img->player_y);
 }
