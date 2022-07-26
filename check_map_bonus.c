@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:46:22 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:13:26 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	check_map_rectangle(t_data *img)
 	while (++x < img->lines - 1)
 	{
 		if (ft_strlen(img->map[x]) != firstlen)
-			errors(6);
+			errors(img, 6);
 	}
 }
 
@@ -56,12 +56,12 @@ void	check_map_walls(t_data *img)
 			if (img->map[x][y] == '1')
 				y++;
 			else
-				errors(4);
+				errors(img, 4);
 		}
 		else if (x > 0 && x < img->lines - 1)
 		{
 			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
-				errors(5);
+				errors(img, 5);
 		}
 		x++;
 	}
@@ -75,7 +75,7 @@ void	check_map_char(t_data *img)
 	while (x < img->lines - 1)
 	{
 		if (isinset(img->map[x], "01CEPZ") != 1)
-			errors(3);
+			errors(img, 3);
 		if (ft_strchr(img->map[x], 'Z') != NULL)
 			img->nbr_enemy = 1;
 		x++;
@@ -86,9 +86,9 @@ void	check_map(t_data *img)
 {
 	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
-		errors(1);
+		errors(img, 1);
 	if (img->lenght < 5 || img->lines < 3)
-		errors(2);
+		errors(img, 2);
 	check_map_walls(img);
 	check_map_char(img);
 	check_map_rectangle(img);

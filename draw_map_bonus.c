@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:02:31 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 11:49:15 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:12:54 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static void	convert_data(t_data *img, int index, int data)
 		mlx_string_put(img->mlx, img->mlx_win, 80, 0, 0x00FF0000, str);
 	else if (index == 2)
 		mlx_string_put(img->mlx, img->mlx_win, 80, 25, 0x6922ff, str);
-	else
-		free (str);
+	free (str);
 }
 
 void	top_line(t_data *img, t_level lvl1)

@@ -6,54 +6,63 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 10:49:35 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:39:53 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	errors(int error_code)
-{
-	if (error_code == 1)
-		printf("%s\n%s\n", "Error", "Il n'y a pas de carte");
-	if (error_code == 2)
-		printf("%s\n%s\n", "Error", "Carte trop petite");
-	if (error_code == 3)
-		printf("%s\n%s\n", "Error", "Caractère manquant ou mauvais caractère");
-	if (error_code == 4)
-		printf("%s\n%s\n", "Error", "Murs non valides (haut/bas)");
-	if (error_code == 5)
-		printf("%s\n%s\n", "Error", "Murs non valides (gauche/droite)");
-	if (error_code == 6)
-		printf("%s\n%s\n", "Error", "La carte n'est pas un rectangle parfait");
-	exit(1);
-}
-
-int	endgame(t_data *img)
+void	free_map(t_data *img)
 {
 	int	x;
 
-	img->moves = img->moves + 1;
-	printf("%d\n", img->moves);
-	printf("%s\n", "Partie Terminée !");
-	mlx_destroy_window(img->mlx, img->mlx_win);
 	x = 0;
 	while (x < img->lines)
 	{
 		free (img->map[x]);
 		x++;
 	}
+}
+
+int	errors(t_data *img)
+{
+	if (img->error_code == 0)
+		return (0);
+	else if (img->error_code == 1)
+		printf("%s\n%s\n", "Error", "Il n'y a pas de carte");
+	else if (img->error_code == 2)
+		printf("%s\n%s\n", "Error", "Carte trop petite");
+	else if (img->error_code == 3)
+		printf("%s\n%s\n", "Error", "Caractère manquant ou mauvais caractère");
+	else if (img->error_code == 4)
+		printf("%s\n%s\n", "Error", "Murs non valides (haut/bas)");
+	else if (img->error_code == 5)
+		printf("%s\n%s\n", "Error", "Murs non valides (gauche/droite)");
+	else if (img->error_code == 6)
+		printf("%s\n%s\n", "Error", "La carte n'est pas un rectangle parfait");
+	else if (img->error_code == 7)
+		printf("%s\n%s\n", "Error", "Probleme FD");
+	else if (img->error_code == 8)
+		printf("%s\n%s\n", "Error", "Mauvais nom de fichier carte");
+	else if (img->error_code == 9)
+		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
+	free_map(img);
+	exit (1);
+}
+
+int	endgame(t_data *img)
+{
+	printf("%d\n", img->moves);
+	printf("%s\n", "Partie Terminée !");
+	mlx_destroy_window(img->mlx, img->mlx_win);
+	free_map(img);
 	exit (0);
 }
 
 int	key_hook(int keycode, t_data *img)
 {
 	if (keycode == 53)
-	{
-		printf("%s\n", "Auf wiedersehen");
-		mlx_destroy_window(img->mlx, img->mlx_win);
-		exit (0);
-	}
+		endgame(img);
 	if (keycode == 13)
 		go_up(img);
 	if (keycode == 0)

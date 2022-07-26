@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:47:25 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 12:49:58 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,4 @@ void	init_enemy(t_data *img)
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
 		img->enemy_x * 64, img->enemy_y * 64 + 50);
-	printf("enemy x start : %d\n", img->enemy_x);
-	printf("enemy y start : %d\n", img->enemy_y);
 }

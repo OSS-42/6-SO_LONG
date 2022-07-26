@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:57:47 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:04:50 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,4 @@ void	init_player(t_data *img)
 			&img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
 		img->player_x * 64, img->player_y * 64);
-	printf("player start x : %d\n", img->player_x);
-	printf("player start y : %d\n", img->player_y);
 }

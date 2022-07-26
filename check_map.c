@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 09:52:03 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 16:10:48 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,30 @@ static int	isinset(char *s1, char *set)
 void	check_map_rectangle(t_data *img)
 {
 	size_t	firstlen;
-	int		x;
+	int			x;
+	size_t		y;
 
+	firstlen = 0;
 	x = 0;
-	firstlen = ft_strlen(img->map[x]);
-	while (++x < img->lines - 1)
+	while (img->map[0][x] != '\n')
 	{
-		if (ft_strlen(img->map[x]) != firstlen)
-			errors(6);
+		firstlen++;
+		x++;
+	}
+	x = 1;
+	while (x <= img->lines - 1)
+	{
+		y = 0;
+		printf("\nx :%d\n", x);
+		printf("firstlen: %zu\n", firstlen);
+		while (img->map[x][y] != '\0')
+		{
+				y++;
+		}
+		printf("line len: %zu\n", y);
+		if (y != firstlen)
+			img->error_code = 6;
+		x++;
 	}
 }
 
@@ -56,12 +72,12 @@ void	check_map_walls(t_data *img)
 			if (img->map[x][y] == '1')
 				y++;
 			else
-				errors(4);
+				img->error_code = 4;
 		}
 		else if (x > 0 && x < img->lines - 1)
 		{
 			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
-				errors(5);
+				img->error_code = 5;
 		}
 		x++;
 	}
@@ -75,7 +91,7 @@ void	check_map_char(t_data *img)
 	while (x < img->lines - 1)
 	{
 		if (isinset(img->map[x], "01CEP") != 1)
-			errors(3);
+			img->error_code = 3;
 		x++;
 	}
 }
@@ -84,9 +100,9 @@ void	check_map(t_data *img)
 {
 	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
-		errors(1);
-	if (img->lenght < 5 || img->lines < 3)
-		errors(2);
+		img->error_code = 1;
+	else if (img->lenght <= 4 || img->lines <= 3)
+		img->error_code = 2;
 	check_map_walls(img);
 	check_map_char(img);
 	check_map_rectangle(img);

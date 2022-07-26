@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 11:48:11 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:16:27 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ static void	check_fd(t_data *img, int fd)
 	char	*line;
 	
 	if (fd < 0)
-	{
-		printf("%s\n%s\n", "Error", "Probleme FD");
-		exit (1);
-	}
+		errors(img , 7);
 	img->lines = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -39,10 +36,7 @@ void	check_map_name(t_data *img)
 
 	filename = ft_strrchr(img->argv, '.');
 	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
-	{
-		printf("%s\n%s\n", "Error", "Mauvais nom de fichier carte");
-		exit (1);
-	}
+		errors(img, 8);
 }
 
 void	map_to_array(t_data *img)
@@ -73,10 +67,7 @@ int	main(int argc, char **argv)
 	t_data	img;
 
 	if (argc != 2)
-	{
-		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
-		exit (1);
-	}
+		errors(&img, 9);
 	img.argv = argv[1];
 	check_map_name(&img);
 	map_to_array(&img);
