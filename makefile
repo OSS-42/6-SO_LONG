@@ -9,6 +9,7 @@ RM = rm -f
 MLXDIR = includes/mlx/
 LIBFT = libft.a
 LDIR = includes/libft/
+BDIR = bonus/
 
 #COLORS
 LRED = \033[91m
@@ -20,9 +21,9 @@ DEF_COLOR = \033[0;39m
 
 #SOURCES
 SRC = so_long.c newgame.c init_assets.c init_player.c player_moves.c draw_map.c \
-		check_map.c
+		check_map.c newgame_utils.c
 SRCBON = so_long_bonus.c newgame_bonus.c init_assets_bonus.c init_player_bonus.c player_moves_bonus.c draw_map_bonus.c\
-		check_map_bonus.c init_enemy_bonus.c enemy_moves_bonus.c
+		check_map_bonus.c init_enemy_bonus.c enemy_moves_bonus.c newgame_utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJBON = $(SRCBON:.c=.o)

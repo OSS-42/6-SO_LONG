@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:37:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:14:22 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,7 @@ void	enemy_go_up(t_data *img)
 		img->enemy_y = img->enemy_y - 1;
 		if (img->enemy_y == img->player_y
 			&& img->enemy_x == img->player_x)
-		{
-			printf("%s\n", "TIG ! vous avez perdu !");
-			free_map(img);
-			exit (0);
-		}
+			endgame_bad(img);
 	}	
 }
 
@@ -52,11 +48,7 @@ void	enemy_go_down(t_data *img)
 		img->enemy_y = img->enemy_y + 1;
 		if (img->enemy_y == img->player_y
 			&& img->enemy_x == img->player_x)
-		{
-			printf("%s\n", "TIG ! vous avez perdu !");
-			free_map(img);
-			exit (0);
-		}
+			endgame_bad(img);
 	}	
 }
 
@@ -69,11 +61,7 @@ void	enemy_go_left(t_data *img)
 		img->enemy_x = img->enemy_x - 1;
 		if (img->enemy_x == img->player_x
 			&& img->enemy_y == img->player_y)
-		{
-			printf("%s\n", "TIG ! vous avez perdu !");
-			free_map(img);
-			exit (0);
-		}
+			endgame_bad(img);
 	}	
 }
 
@@ -86,10 +74,6 @@ void	enemy_go_right(t_data *img)
 		img->enemy_x = img->enemy_x + 1;
 		if (img->enemy_x == img->player_x
 			&& img->enemy_y == img->player_y)
-		{
-			printf("%s\n", "TIG ! vous avez perdu !");
-			free_map(img);
-			exit (0);
-		}
+			endgame_bad(img);
 	}	
 }

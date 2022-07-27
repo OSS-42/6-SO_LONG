@@ -6,23 +6,11 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:09:29 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:37:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	free_map(t_data *img)
-{
-	int	x;
-
-	x = 0;
-	while (x < img->lines)
-	{
-		free (img->map[x]);
-		x++;
-	}
-}
 
 int	errors(t_data *img)
 {
@@ -52,15 +40,6 @@ int	errors(t_data *img)
 	exit (1);
 }
 
-int	endgame(t_data *img)
-{
-	printf("%d\n", img->moves);
-	printf("%s\n", "Partie Terminée !");
-	mlx_destroy_window(img->mlx, img->mlx_win);
-	free_map(img);
-	exit (0);
-}
-
 int	key_hook(int keycode, t_data *img)
 {
 	if (keycode == 53)
@@ -86,6 +65,6 @@ void	newgame(t_data *img)
 	init_level(img);
 	init_player(img);
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
-	mlx_key_hook(img->mlx_win, key_hook, img);
+	mlx_hook(img->mlx_win, 02, 0, key_hook, img);
 	mlx_loop(img->mlx);
 }

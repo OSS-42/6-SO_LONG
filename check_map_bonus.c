@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:39:01 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 12:41:51 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	check_map_char(t_data *img)
 	x = 0;
 	while (x < img->lines - 1)
 	{
-		if (isinset(img->map[x], "01CEPZ") != 1)
+		if (isinset(img->map[x], "01CEP") != 1)
 		{
 			img->error_code = 3;
 			errors(img);
@@ -94,7 +94,6 @@ void	check_map_char(t_data *img)
 	}
 	search_collectibles(img, 'E');
 	search_collectibles(img, 'P');
-	search_collectibles(img, 'Z');
 	search_collectibles(img, 'C');
 	errors(img);
 }

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:41:41 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 13:19:44 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ void	enemy_go_left(t_data *img);
 void	enemy_go_right(t_data *img);
 void	free_map(t_data *img);
 int		endgame(t_data *img);
+void	endgame_bad(t_data *img);
+int		quit_game(t_data *img);
 
 #endif
