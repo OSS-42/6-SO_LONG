@@ -6,14 +6,14 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:19:44 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:54:40 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-# include "includes/mlx/mlx.h"
-# include "includes/libft/libft.h"
+# include "../includes/mlx/mlx.h"
+# include "../includes/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <time.h>

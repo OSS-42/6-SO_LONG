@@ -1,15 +1,15 @@
 #VARIABLES
 
 NAME = so_long
-NAMEBON = so_long_bonus
+NAME_BONUS = so_long_bonus
 
 CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -f
-MLXDIR = includes/mlx/
 LIBFT = libft.a
-LDIR = includes/libft/
-BDIR = bonus/
+DIR_MLX = includes/mlx/
+DIR_LIBFT = includes/libft/
+DIR_BONUS = bonus/
 
 #COLORS
 LRED = \033[91m
@@ -22,11 +22,19 @@ DEF_COLOR = \033[0;39m
 #SOURCES
 SRC = so_long.c newgame.c init_assets.c init_player.c player_moves.c draw_map.c \
 		check_map.c newgame_utils.c
-SRCBON = so_long_bonus.c newgame_bonus.c init_assets_bonus.c init_player_bonus.c player_moves_bonus.c draw_map_bonus.c\
-		check_map_bonus.c init_enemy_bonus.c enemy_moves_bonus.c newgame_utils_bonus.c
+SRC_BONUS = bonus/so_long_bonus.c\
+			bonus/newgame_bonus.c\
+			bonus/init_assets_bonus.c\
+			bonus/init_player_bonus.c\
+			bonus/player_moves_bonus.c\
+			bonus/draw_map_bonus.c\
+			bonus/check_map_bonus.c\
+			bonus/init_enemy_bonus.c\
+			bonus/enemy_moves_bonus.c\
+			bonus/newgame_utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
-OBJBON = $(SRCBON:$(BDIR)%.c=$(BDIR)%.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 .c.o :
 #Pour MacOs
@@ -36,36 +44,36 @@ OBJBON = $(SRCBON:$(BDIR)%.c=$(BDIR)%.o)
 
 #$(V).SILENT:
 
-all:	$(LDIR)/$(LIBFT) $(NAME)
+all:	$(DIR_LIBFT)/$(LIBFT) $(NAME)
 
 $(NAME):	$(OBJ) $(SRC)
-	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(LDIR)$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
 #	$(CC) $(CFLAGS) $(OBJ) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME) $(LDIR)$(LIBFT)
 #	@echo "$(LGREEN)MLX  pour Linux ready !$(DEF_COLOR)"
 #	$(AR) $(NAME) $(OBJ)
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
-$(LDIR)/$(LIBFT):
-	make -C $(LDIR)
+$(DIR_LIBFT)/$(LIBFT):
+	make -C $(DIR_LIBFT)
 	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
-$(NAMEBON): $(OBJBON) $(SRCBON)
-	$(CC) $(CFLAGS) $(OBJBON) -lmlx -framework OpenGL -framework AppKit -o $(NAMEBON) $(LDIR)$(LIBFT)
+$(NAME_BONUS): $(OBJ_BONUS) $(SRC_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
 
-bonus: $(LDIR)/$(LIBFT) $(NAMEBON)
+bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)
 
 clean:
 	$(RM) $(OBJ)
-	$(RM) $(OBJBON)
-	$(RM) $(LDIR)*.o
+	$(RM) $(OBJ_BONUS)
+	$(RM) $(DIR_LIBFT)*.o
 	@echo "$(LCYAN)Objects files cleaned !$(DEF_COLOR)"
 
 fclean:	clean
-	$(RM) $(LDIR)$(LIBFT)
+	$(RM) $(DIR_LIBFT)$(LIBFT)
 	$(RM) $(NAME)
-	$(RM) $(NAMEBON)
+	$(RM) $(NAME_BONUS)
 	$(RM) *.o
 	@echo "$(LCYAN)Executables files cleaned !$(DEF_COLOR)"
 
