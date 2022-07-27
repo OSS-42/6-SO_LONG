@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:30:58 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:39:12 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	check_map_char(t_data *img)
 void	check_map(t_data *img)
 {
 	img->lenght = ft_strlen(img->map[0]);
+	printf("%s\n", img->map[0]);
 	if (img->map[0][0] == '\0')
 		img->error_code = 1;
 	else if (img->lenght <= 4 || img->lines <= 3)

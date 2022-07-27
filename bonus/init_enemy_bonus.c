@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:21:40 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:28:10 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 //x et y dans l'image sont inversés dans un tableau.
 //donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x
 //attention au 0 dans les 2 cas.
-
-
 
 static void random_start(t_data *img)
 {

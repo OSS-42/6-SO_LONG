@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:37:05 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 14:18:36 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	errors(t_data *img)
 int	key_hook(int keycode, t_data *img)
 {
 	if (keycode == 53)
-		endgame(img);
+		quit_game(img);
 	if (keycode == 13)
 		go_up(img);
 	if (keycode == 0)
