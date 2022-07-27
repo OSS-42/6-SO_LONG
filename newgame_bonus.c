@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:21:32 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:51:15 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,30 @@ void	free_map(t_data *img)
 	}
 }
 
-void	errors(t_data *img, int error_code)
+int	errors(t_data *img)
 {
-	if (error_code == 1)
+	if (img->error_code == 0)
+		return (0);
+	else if (img->error_code == 1)
 		printf("%s\n%s\n", "Error", "Il n'y a pas de carte");
-	if (error_code == 2)
+	else if (img->error_code == 2)
 		printf("%s\n%s\n", "Error", "Carte trop petite");
-	if (error_code == 3)
-		printf("%s\n%s\n", "Error", "Caractère manquant ou mauvais caractère");
-	if (error_code == 4)
+	else if (img->error_code == 3)
+		printf("%s\n%s\n", "Error", "Mauvais caractère");
+	else if (img->error_code == 4)
 		printf("%s\n%s\n", "Error", "Murs non valides (haut/bas)");
-	if (error_code == 5)
+	else if (img->error_code == 5)
 		printf("%s\n%s\n", "Error", "Murs non valides (gauche/droite)");
-	if (error_code == 6)
+	else if (img->error_code == 6)
 		printf("%s\n%s\n", "Error", "La carte n'est pas un rectangle parfait");
-	if (error_code == 7)
+	else if (img->error_code == 7)
 		printf("%s\n%s\n", "Error", "Probleme FD");
-	if (error_code == 8)
+	else if (img->error_code == 8)
 		printf("%s\n%s\n", "Error", "Mauvais nom de fichier carte");
-	if (error_code == 9)
+	else if (img->error_code == 9)
 		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
+	else if (img->error_code == 10)
+		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
 	free_map(img);
 	exit (1);
 }
@@ -79,14 +83,13 @@ void	newgame(t_data *img)
 	img->mlx = mlx_init();
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64 + 50), "A Day in 42 Quebec");
-	search_collectibles(img);
 	img->moves = 0;
 	img->collectibles = 0;
 	srand((unsigned) time(&t));
 	init_level(img);
 	init_player(img);
-	if (img->nbr_enemy == 1)
-		init_enemy(img);
+	printf("%d\n", img->nbr_enemy);
+	init_enemy(img);
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
 	mlx_key_hook(img->mlx_win, key_hook, img);
 	mlx_loop(img->mlx);

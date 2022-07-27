@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 15:39:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:09:29 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	errors(t_data *img)
 	else if (img->error_code == 2)
 		printf("%s\n%s\n", "Error", "Carte trop petite");
 	else if (img->error_code == 3)
-		printf("%s\n%s\n", "Error", "Caractère manquant ou mauvais caractère");
+		printf("%s\n%s\n", "Error", "Mauvais caractère");
 	else if (img->error_code == 4)
 		printf("%s\n%s\n", "Error", "Murs non valides (haut/bas)");
 	else if (img->error_code == 5)
@@ -46,6 +46,8 @@ int	errors(t_data *img)
 		printf("%s\n%s\n", "Error", "Mauvais nom de fichier carte");
 	else if (img->error_code == 9)
 		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
+	else if (img->error_code == 10)
+		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
 	free_map(img);
 	exit (1);
 }
@@ -79,7 +81,6 @@ void	newgame(t_data *img)
 	img->mlx = mlx_init();
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64), "A Day in 42 Quebec");
-	search_collectibles(img);
 	img->moves = 0;
 	img->collectibles = 0;
 	init_level(img);

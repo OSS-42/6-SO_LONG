@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 15:40:27 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:32:47 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	check_map_rectangle(t_data *img);
 void	check_map_name(t_data *img);
 void	map_to_array(t_data *img);
 void	draw_map(t_data *img, t_level level_1);
-int		search_collectibles(t_data *img);
+void	search_collectibles(t_data *img, char z);
 void	top_line(t_data *img, t_level level_1);
 void	middle_line(t_data *img, t_level level_1);
 void	bottom_line(t_data *img, t_level level_1);

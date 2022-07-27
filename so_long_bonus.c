@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:16:27 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:35:07 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void	check_fd(t_data *img, int fd)
 	char	*line;
 	
 	if (fd < 0)
-		errors(img , 7);
+	{
+		img->error_code = 7;
+		errors(img);
+	}
 	img->lines = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -36,7 +39,10 @@ void	check_map_name(t_data *img)
 
 	filename = ft_strrchr(img->argv, '.');
 	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
-		errors(img, 8);
+	{
+		img->error_code = 8;
+		errors(img);
+	}
 }
 
 void	map_to_array(t_data *img)
@@ -55,6 +61,7 @@ void	map_to_array(t_data *img)
 		if (img->map[x] == NULL)
 		{
 			free(img->map[x]);
+			close(fd);
 			break ;
 		}
 		x++;
@@ -66,13 +73,14 @@ int	main(int argc, char **argv)
 {
 	t_data	img;
 
+	img.error_code = 0;
 	if (argc != 2)
-		errors(&img, 9);
+		img.error_code = 9;
 	img.argv = argv[1];
 	check_map_name(&img);
 	map_to_array(&img);
 	check_map(&img);
+	errors(&img);
 	newgame(&img);
-	free (img.map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:13:26 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:39:01 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,25 @@ static int	isinset(char *s1, char *set)
 
 void	check_map_rectangle(t_data *img)
 {
-	size_t	firstlen;
-	int		x;
+	size_t		firstlen;
+	int			x;
+	size_t		y;
 
-	x = 0;
-	firstlen = ft_strlen(img->map[x]);
-	while (++x < img->lines - 1)
+	firstlen = 0;
+	while (img->map[0][firstlen] != '\n')
+		firstlen++;
+	x = 1;
+	while (x <= img->lines - 1)
 	{
-		if (ft_strlen(img->map[x]) != firstlen)
-			errors(img, 6);
+		y = 0;
+		while (img->map[x][y] != '\0' && img->map[x][y] != '\n')
+				y++;
+		if (y != firstlen)
+		{
+			img->error_code = 6;
+			errors(img);
+		}
+		x++;
 	}
 }
 
@@ -56,15 +66,16 @@ void	check_map_walls(t_data *img)
 			if (img->map[x][y] == '1')
 				y++;
 			else
-				errors(img, 4);
+				img->error_code = 4;
 		}
 		else if (x > 0 && x < img->lines - 1)
 		{
 			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
-				errors(img, 5);
+				img->error_code = 5;
 		}
 		x++;
 	}
+	errors(img);
 }
 
 void	check_map_char(t_data *img)
@@ -75,20 +86,27 @@ void	check_map_char(t_data *img)
 	while (x < img->lines - 1)
 	{
 		if (isinset(img->map[x], "01CEPZ") != 1)
-			errors(img, 3);
-		if (ft_strchr(img->map[x], 'Z') != NULL)
-			img->nbr_enemy = 1;
+		{
+			img->error_code = 3;
+			errors(img);
+		}
 		x++;
 	}
+	search_collectibles(img, 'E');
+	search_collectibles(img, 'P');
+	search_collectibles(img, 'Z');
+	search_collectibles(img, 'C');
+	errors(img);
 }
 
 void	check_map(t_data *img)
 {
 	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
-		errors(img, 1);
-	if (img->lenght < 5 || img->lines < 3)
-		errors(img, 2);
+			img->error_code = 1;
+	else if (img->lenght <= 4 || img->lines <= 3)
+		img->error_code = 2;
+	errors(img);
 	check_map_walls(img);
 	check_map_char(img);
 	check_map_rectangle(img);

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:04:50 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:07:07 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 //donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x
 //attention au 0 dans les 2 cas.
 
-int	search_collectibles(t_data *img)
+void	search_collectibles(t_data *img, char z)
 {
 	int	x;
 	int	y;
+	int	w;
 
+	w = 0;
 	x = 0;
 	img->total_c = 0;
 	while (x < img->lines - 1)
@@ -28,13 +30,19 @@ int	search_collectibles(t_data *img)
 		y = 0;
 		while (img->map[x][y])
 		{
-			if (img->map[x][y] == 'C')
+			if (z == 'C' && img->map[x][y] == z)
+			{
 				img->total_c++;
+				w = 1;
+			}
+			else if (img->map[x][y] == z)
+				w = 2;
 			y++;
 		}
 		x++;
 	}
-	return (0);
+	if ((z == 'C' && img->total_c == 0) || w == 0)
+		img->error_code = 10;
 }
 
 static int	search_start(char *string, char c)

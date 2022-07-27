@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 15:51:18 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:31:27 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static void	check_fd(t_data *img, int fd)
 	char	*line;
 
 	if (fd < 0)
+	{
 		img->error_code = 7;
+		errors(img);
+	}
 	img->lines = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -36,7 +39,10 @@ void	check_map_name(t_data *img)
 
 	filename = ft_strrchr(img->argv, '.');
 	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
+	{
 		img->error_code = 8;
+		errors(img);
+	}
 }
 
 void	map_to_array(t_data *img)
@@ -74,7 +80,7 @@ int	main(int argc, char **argv)
 	check_map_name(&img);
 	map_to_array(&img);
 	check_map(&img);
-	if (errors(&img) == 0)
-		newgame(&img);
+	errors(&img);
+	newgame(&img);
 	return (0);
 }

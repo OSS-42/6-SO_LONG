@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 16:10:48 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 11:30:58 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,24 @@ static int	isinset(char *s1, char *set)
 
 void	check_map_rectangle(t_data *img)
 {
-	size_t	firstlen;
+	size_t		firstlen;
 	int			x;
 	size_t		y;
 
 	firstlen = 0;
-	x = 0;
-	while (img->map[0][x] != '\n')
-	{
+	while (img->map[0][firstlen] != '\n')
 		firstlen++;
-		x++;
-	}
 	x = 1;
 	while (x <= img->lines - 1)
 	{
 		y = 0;
-		printf("\nx :%d\n", x);
-		printf("firstlen: %zu\n", firstlen);
-		while (img->map[x][y] != '\0')
-		{
+		while (img->map[x][y] != '\0' && img->map[x][y] != '\n')
 				y++;
-		}
-		printf("line len: %zu\n", y);
 		if (y != firstlen)
+		{
 			img->error_code = 6;
+			errors(img);
+		}
 		x++;
 	}
 }
@@ -81,6 +75,7 @@ void	check_map_walls(t_data *img)
 		}
 		x++;
 	}
+	errors(img);
 }
 
 void	check_map_char(t_data *img)
@@ -91,9 +86,16 @@ void	check_map_char(t_data *img)
 	while (x < img->lines - 1)
 	{
 		if (isinset(img->map[x], "01CEP") != 1)
+		{
 			img->error_code = 3;
+			errors(img);
+		}
 		x++;
 	}
+	search_collectibles(img, 'E');
+	search_collectibles(img, 'P');
+	search_collectibles(img, 'C');
+	errors(img);
 }
 
 void	check_map(t_data *img)
@@ -103,6 +105,7 @@ void	check_map(t_data *img)
 		img->error_code = 1;
 	else if (img->lenght <= 4 || img->lines <= 3)
 		img->error_code = 2;
+	errors(img);
 	check_map_walls(img);
 	check_map_char(img);
 	check_map_rectangle(img);
