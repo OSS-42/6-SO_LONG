@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:31:27 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:06:09 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static void	check_fd(t_data *img, int fd)
 	}
 	img->lines = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		img->error_code = 1;
+		errors(img);
+	}
 	while (line)
 	{
 		img->lines++;
@@ -53,7 +58,7 @@ void	map_to_array(t_data *img)
 	fd = open(img->argv, O_RDONLY);
 	check_fd(img, fd);
 	fd = open(img->argv, O_RDONLY);
-	img->map = (char **)malloc(sizeof(char *) * img->lines);
+	img->map = (char **)malloc(sizeof(char *) * (img->lines + 1));
 	x = 0;
 	while (1)
 	{

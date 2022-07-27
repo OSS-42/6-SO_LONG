@@ -26,7 +26,7 @@ SRCBON = so_long_bonus.c newgame_bonus.c init_assets_bonus.c init_player_bonus.c
 		check_map_bonus.c init_enemy_bonus.c enemy_moves_bonus.c newgame_utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
-OBJBON = $(SRCBON:.c=.o)
+OBJBON = $(SRCBON:$(BDIR)%.c=$(BDIR)%.o)
 
 .c.o :
 #Pour MacOs
