@@ -6,23 +6,26 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:18:42 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:43:53 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	print_moves(t_data *img)
+void	print_moves(t_data *img)
 {
-	img->moves = img->moves + 1;
 	mlx_clear_window(img->mlx, img->mlx_win);
-	init_level(img);
-	printf("%d\n", img->moves);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
-		img->player_x * 64, img->player_y * 64 + 50);
-	if (img->enemy > 0)
-		mlx_put_image_to_window(img->mlx, img->mlx_win, img->enemy,
-			img->enemy_x * 64, img->enemy_y * 64 + 50);
+	draw_map(img);
+	printf("%d\n", img->p_dir);
+	if (img->p_dir == 2)
+		mlx_put_image_to_window(img->mlx, img->mlx_win,
+			img->player->p_left, img->player_x * 64, img->player_y * 64 + 50);
+	else
+		mlx_put_image_to_window(img->mlx, img->mlx_win,
+			img->player->p_right, img->player_x * 64, img->player_y * 64 + 50);
+	mlx_put_image_to_window(img->mlx, img->mlx_win,
+		img->frames->enemy_pic[img->frames->frame_enemy],
+		img->enemy_x * 64, img->enemy_y * 64 + 50);
 }
 
 void	go_up(t_data *img)
@@ -40,10 +43,12 @@ void	go_up(t_data *img)
 				endgame(img);
 		}
 		img->player_y = img->player_y - 1;
+		img->moves = img->moves + 1;
+		printf("%d\n", img->moves);
 		if (img->enemy_y == img->player_y && img->enemy_x == img->player_x)
-			endgame_bad(img);	
-		if (img->enemy > 0)
-			random_moves(img);
+			endgame_bad(img);
+		img->p_dir = 1;
+		random_moves(img);
 		print_moves(img);
 	}	
 }
@@ -63,19 +68,18 @@ void	go_down(t_data *img)
 				endgame(img);
 		}
 		img->player_y = img->player_y + 1;
+		img->moves = img->moves + 1;
+		printf("%d\n", img->moves);
 		if (img->enemy_y == img->player_y && img->enemy_x == img->player_x)
 			endgame_bad(img);
-		if (img->enemy > 0)
-			random_moves(img);
+		img->p_dir = 1;
+		random_moves(img);
 		print_moves(img);
 	}	
 }
 
 void	go_left(t_data *img)
 {
-	int	img_width;
-	int	img_height;
-
 	if (img->map[img->player_y][img->player_x - 1] != '1')
 	{
 		if (img->map[img->player_y][img->player_x - 1] == 'C')
@@ -89,21 +93,18 @@ void	go_left(t_data *img)
 				endgame(img);
 		}
 		img->player_x = img->player_x - 1;
+		img->moves = img->moves + 1;
+		printf("%d\n", img->moves);
 		if (img->enemy_y == img->player_y && img->enemy_x == img->player_x)
 			endgame_bad(img);	
-		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_left.xpm",
-				&img_width, &img_height);
-		if (img->enemy > 0)
-			random_moves(img);
+		img->p_dir = 2;
+		random_moves(img);
 		print_moves(img);
 	}	
 }
 
 void	go_right(t_data *img)
 {
-	int	img_width;
-	int	img_height;
-
 	if (img->map[img->player_y][img->player_x + 1] != '1')
 	{
 		if (img->map[img->player_y][img->player_x + 1] == 'C')
@@ -117,12 +118,12 @@ void	go_right(t_data *img)
 				endgame(img);
 		}
 		img->player_x = img->player_x + 1;
+		img->moves = img->moves + 1;
+		printf("%d\n", img->moves);
 		if (img->enemy_y == img->player_y && img->enemy_x == img->player_x)
 			endgame_bad(img);
-		img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
-				&img_width, &img_height);
-		if (img->enemy > 0)
-			random_moves(img);
+		img->p_dir = 1;
+		random_moves(img);
 		print_moves(img);
 	}	
 }

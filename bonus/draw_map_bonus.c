@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:02:31 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/26 13:12:54 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 15:02:52 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,86 +24,88 @@ static void	convert_data(t_data *img, int index, int data)
 	free (str);
 }
 
-void	top_line(t_data *img, t_level lvl1)
+void	top_line(t_data *img)
 {
-	lvl1.y = 0;
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.corner_1,
-		lvl1.img_x, lvl1.img_y);
-	lvl1.y++;
-	while (lvl1.y < (img->lenght - 2))
+	img->lvl1->y = 0;
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->corner_1,
+		img->lvl1->img_x, img->lvl1->img_y);
+	img->lvl1->y++;
+	while (img->lvl1->y < (img->lenght - 2))
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.wall_top,
-			lvl1.y * 64, lvl1.img_y);
-		lvl1.y++;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->wall_top,
+			img->lvl1->y * 64, img->lvl1->img_y);
+		img->lvl1->y++;
 	}
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.corner_2,
-		lvl1.y * 64, lvl1.img_y);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->corner_2,
+		img->lvl1->y * 64, img->lvl1->img_y);
 }
 
-void	middle_line(t_data *img, t_level lvl1)
+void	middle_line(t_data *img)
 {
-	lvl1.y = 0;
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.wall_left,
-		lvl1.img_x, lvl1.img_y);
-	lvl1.y = 1;
-	while (lvl1.y < (img->lenght - 2))
+	img->lvl1->y = 0;
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->wall_left,
+		img->lvl1->img_x, img->lvl1->img_y);
+	img->lvl1->y = 1;
+	while (img->lvl1->y < (img->lenght - 2))
 	{
-		if (img->map[lvl1.x][lvl1.y] == '1')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.pilar,
-				lvl1.y * 64, lvl1.img_y);
-		if (img->map[lvl1.x][lvl1.y] == '0' || img->map[lvl1.x][lvl1.y] == 'Z')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.floor,
-				lvl1.y * 64, lvl1.img_y);
-		if (img->map[lvl1.x][lvl1.y] == 'E')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.exit,
-				lvl1.y * 64, lvl1.img_y);
-		if (img->map[lvl1.x][lvl1.y] == 'C')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.collectible,
-				lvl1.y * 64, lvl1.img_y);
-		if (img->map[lvl1.x][lvl1.y] == 'P')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.start,
-				lvl1.y * 64, lvl1.img_y);
-		lvl1.y++;
+		if (img->map[img->lvl1->x][img->lvl1->y] == '1')
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->pilar,
+				img->lvl1->y * 64, img->lvl1->img_y);
+		if (img->map[img->lvl1->x][img->lvl1->y] == '0'
+			|| img->map[img->lvl1->x][img->lvl1->y] == 'Z')
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->floor,
+				img->lvl1->y * 64, img->lvl1->img_y);
+		if (img->map[img->lvl1->x][img->lvl1->y] == 'E')
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->exit,
+				img->lvl1->y * 64, img->lvl1->img_y);
+		if (img->map[img->lvl1->x][img->lvl1->y] == 'C')
+			mlx_put_image_to_window(img->mlx, img->mlx_win,
+			img->lvl1->collectible,
+				img->lvl1->y * 64, img->lvl1->img_y);
+		if (img->map[img->lvl1->x][img->lvl1->y] == 'P')
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->start,
+				img->lvl1->y * 64, img->lvl1->img_y);
+		img->lvl1->y++;
 	}
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.wall_right,
-		lvl1.y * 64, lvl1.img_y);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->wall_right,
+		img->lvl1->y * 64, img->lvl1->img_y);
 }
 
-void	bottom_line(t_data *img, t_level lvl1)
+void	bottom_line(t_data *img)
 {
-	lvl1.y = 0;
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.corner_3,
-		lvl1.img_x, lvl1.img_y);
-	lvl1.y = 1;
-	while (lvl1.y < (img->lenght - 2))
+	img->lvl1->y = 0;
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->corner_3,
+		img->lvl1->img_x, img->lvl1->img_y);
+	img->lvl1->y = 1;
+	while (img->lvl1->y < (img->lenght - 2))
 	{
-		mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.wall_bottom,
-			lvl1.y * 64, lvl1.img_y);
-		lvl1.y++;
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->wall_bottom,
+			img->lvl1->y * 64, img->lvl1->img_y);
+		img->lvl1->y++;
 	}
-	mlx_put_image_to_window(img->mlx, img->mlx_win, lvl1.corner_4,
-		lvl1.y * 64, lvl1.img_y);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->corner_4,
+		img->lvl1->y * 64, img->lvl1->img_y);
 }
 
-void	draw_map(t_data *img, t_level lvl1)
+void	draw_map(t_data *img)
 {
 	mlx_string_put(img->mlx, img->mlx_win, 0, 0, 0x00FF0000, "Moves :");
 	mlx_string_put(img->mlx, img->mlx_win, 0, 25, 0x6922ff, "Bottles :");
 	convert_data(img, 1, img->moves);
 	convert_data(img, 2, img->collectibles);
-	lvl1.x = 0;
-	lvl1.img_x = 0;
-	lvl1.img_y = 50;
-	top_line(img, lvl1);
-	lvl1.x = 1;
-	lvl1.img_x = 0;
-	lvl1.img_y = lvl1.img_y + 64;
-	while (lvl1.x < img->lines - 1)
+	img->lvl1->x = 0;
+	img->lvl1->img_x = 0;
+	img->lvl1->img_y = 50;
+	top_line(img);
+	img->lvl1->x = 1;
+	img->lvl1->img_x = 0;
+	img->lvl1->img_y = img->lvl1->img_y + 64;
+	while (img->lvl1->x < img->lines - 1)
 	{
-		middle_line(img, lvl1);
-		lvl1.x++;
-		lvl1.img_x = 0;
-		lvl1.img_y = lvl1.img_y + 64;
+		middle_line(img);
+		img->lvl1->x++;
+		img->lvl1->img_x = 0;
+		img->lvl1->img_y = img->lvl1->img_y + 64;
 	}
-	bottom_line(img, lvl1);
+	bottom_line(img);
 }

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 11:41:33 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:42:48 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	init_player(t_data *img)
 	int	img_width;
 	int	img_height;
 
+	img->player = malloc(sizeof(t_player));
 	img->player_y = 1;
 	while (img->player_y < img->lines - 1)
 	{
@@ -80,8 +81,10 @@ void	init_player(t_data *img)
 		}
 		img->player_y++;
 	}
-	img->player = mlx_xpm_file_to_image(img->mlx, "assets/perso_right.xpm",
-			&img_width, &img_height);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player,
+	img->player->p_right = mlx_xpm_file_to_image(img->mlx,
+		"assets/perso_right.xpm", &img_width, &img_height);
+	img->player->p_left = mlx_xpm_file_to_image(img->mlx,
+		"assets/perso_left.xpm", &img_width, &img_height);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->player->p_right,
 		img->player_x * 64, img->player_y * 64 + 50);
 }

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 12:41:51 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 14:11:34 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,17 @@ void	check_map_walls(t_data *img)
 	int	y;
 
 	x = 0;
-	while (x < img->lines - 1)
+	while (x <= img->lines - 1)
 	{
 		if (x == 0 || x == img->lines - 1)
 		{
 			y = 0;
-			if (img->map[x][y] == '1')
+			while (y < img->lenght - 1)
+			{
+				if (img->map[x][y] != '1')
+					img->error_code = 4;
 				y++;
-			else
-				img->error_code = 4;
+			}
 		}
 		else if (x > 0 && x < img->lines - 1)
 		{

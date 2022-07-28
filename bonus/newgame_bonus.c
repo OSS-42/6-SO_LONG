@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:25:32 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 16:42:33 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ void	newgame(t_data *img)
 	srand((unsigned) time(&t));
 	init_level(img);
 	init_player(img);
-	printf("%d\n", img->nbr_enemy);
 	init_enemy(img);
+	img->p_dir = 1;
 	mlx_hook(img->mlx_win, 17, 0, quit_game, img);
 	mlx_hook(img->mlx_win, 02, 0, key_hook, img);
+	mlx_loop_hook(img->mlx, animated_enemy, img);
 	mlx_loop(img->mlx);
 }

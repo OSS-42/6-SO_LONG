@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 13:25:45 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/28 13:20:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	quit_game(t_data *img)
 
 void	endgame_bad(t_data *img)
 {
+	img->moves = img->moves + 1;
 	printf("%d\n", img->moves);
 	printf("%s\n", "TIG ! vous avez perdu !");
 	mlx_destroy_window(img->mlx, img->mlx_win);
