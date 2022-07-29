@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:11:05 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:00:07 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	newgame(t_data *img)
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64), "A Day in 42 Quebec");
 	img->moves = 0;
-	img->collectibles = 0;
+	img->collect = 0;
 	init_level(img);
 	init_player(img);
 	img->p_dir = 1;

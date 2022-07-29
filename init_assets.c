@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:25:27 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:07:24 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:00:18 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_level(t_data *img)
 			"assets/tile_floor.xpm", &img_width, &img_height);
 	img->lvl1->pilar = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_pilar.xpm", &img_width, &img_height);
-	img->lvl1->collectible = mlx_xpm_file_to_image(img->mlx,
+	img->lvl1->collect = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_collectible.xpm", &img_width, &img_height);
 	img->lvl1->start = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_start.xpm", &img_width, &img_height);
