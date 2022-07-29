@@ -66,14 +66,13 @@ bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)
 clean:
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
-	$(RM) $(DIR_LIBFT)*.o
+	make -C $(DIR_LIBFT) clean
 	@echo "$(LCYAN)Objects files cleaned !$(DEF_COLOR)"
 
 fclean:	clean
 	$(RM) $(DIR_LIBFT)$(LIBFT)
 	$(RM) $(NAME)
 	$(RM) $(NAME_BONUS)
-	$(RM) *.o
 	@echo "$(LCYAN)Executables files cleaned !$(DEF_COLOR)"
 
 re:	fclean all
