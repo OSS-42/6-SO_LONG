@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:25:27 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 12:04:19 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 12:56:42 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	init_level(t_data *img)
 	img->lvl1->floor = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_floor.xpm", &img_width, &img_height);
 	img->lvl1->pilar = mlx_xpm_file_to_image(img->mlx,
-			"assets/tile_pilar.xpm", &img_width, &img_height);
+			"assets/tile_table_mac.xpm", &img_width, &img_height);
 	img->lvl1->collect = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_collectible.xpm", &img_width, &img_height);
 	img->lvl1->start = mlx_xpm_file_to_image(img->mlx,
-			"assets/tile_start.xpm", &img_width, &img_height);
+			"assets/tile_entry.xpm", &img_width, &img_height);
 	img->lvl1->exit = mlx_xpm_file_to_image(img->mlx,
-			"assets/tile_exit.xpm", &img_width, &img_height);
+			"assets/tile_42.xpm", &img_width, &img_height);
 	init_level_walls(img);
 }
