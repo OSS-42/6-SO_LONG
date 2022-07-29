@@ -7,7 +7,6 @@ CC = gcc
 CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -f
 LIBFT = libft.a
-DIR_MLX = includes/mlx/
 DIR_LIBFT = includes/libft/
 DIR_BONUS = bonus/
 
@@ -47,7 +46,7 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 all:	$(DIR_LIBFT)/$(LIBFT) $(NAME)
 
 $(NAME):	$(OBJ) $(SRC)
-	$(CC) $(CFLAGS) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
 #	$(CC) $(CFLAGS) $(OBJ) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME) $(LDIR)$(LIBFT)
 #	@echo "$(LGREEN)MLX  pour Linux ready !$(DEF_COLOR)"
@@ -59,7 +58,7 @@ $(DIR_LIBFT)/$(LIBFT):
 	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
 $(NAME_BONUS): $(OBJ_BONUS) $(SRC_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
 
 bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)

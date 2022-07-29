@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 09:31:54 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:56:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	endgame(t_data *img)
 
 int	quit_game(t_data *img)
 {
-	printf("%d\n", img->moves);
 	printf("%s\n", "Au revoir !");
 	mlx_destroy_window(img->mlx, img->mlx_win);
 	free_map(img);

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/28 15:54:58 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:49:54 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	animated_enemy(t_data *img)
 	return (0);
 }
 
-static void random_start(t_data *img)
+static void	random_start(t_data *img)
 {
 	img->enemy_x = rand() % (img->lenght - 2);
 	img->enemy_y = rand() % (img->lines - 2);
@@ -50,10 +50,10 @@ void	init_enemy(t_data *img)
 	img->frames = malloc(sizeof(t_enemy));
 	img->frames->frame_enemy = 0;
 	img->frames->frame = 0;
-	img->frames->enemy_pic[0] = mlx_xpm_file_to_image(img->mlx, "assets/patrouille.xpm",
-		&img_width, &img_height);
-	img->frames->enemy_pic[1] = mlx_xpm_file_to_image(img->mlx, "assets/patrouille2.xpm",
-		&img_width, &img_height);
+	img->frames->enemy_pic[0] = mlx_xpm_file_to_image(img->mlx,
+			"assets/patrouille.xpm", &img_width, &img_height);
+	img->frames->enemy_pic[1] = mlx_xpm_file_to_image(img->mlx,
+			"assets/patrouille2.xpm", &img_width, &img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->frames->enemy_pic[0],
 		img->enemy_x * 64, img->enemy_y * 64 + 50);
 }

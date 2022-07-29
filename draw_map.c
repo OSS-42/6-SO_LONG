@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 15:02:31 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:07:36 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:46:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	middle_line(t_data *img)
 			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->exit,
 				img->lvl1->y * 64, img->lvl1->img_y);
 		if (img->map[img->lvl1->x][img->lvl1->y] == 'C')
-			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->collectible,
+			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->collect,
 				img->lvl1->y * 64, img->lvl1->img_y);
 		if (img->map[img->lvl1->x][img->lvl1->y] == 'P')
 			mlx_put_image_to_window(img->mlx, img->mlx_win, img->lvl1->start,

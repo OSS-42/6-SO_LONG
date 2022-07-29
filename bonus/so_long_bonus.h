@@ -6,13 +6,14 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 09:27:33 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:53:59 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-# include "../includes/mlx/mlx.h"
+//# include "includes/mlx/mlx.h"
+# include <mlx.h>
 # include "../includes/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -43,7 +44,7 @@ typedef struct s_level
 	void	*wall_bottom;
 	void	*floor;
 	void	*pilar;
-	void	*collectible;
+	void	*collect;
 	void	*start;
 	void	*exit;
 	int		x;
@@ -65,7 +66,7 @@ typedef struct s_data
 	int			lines;
 	int			lenght;
 	int			moves;
-	int			collectibles;
+	int			collect;
 	int			total_c;
 	int			player_x;
 	int			player_y;
@@ -92,6 +93,7 @@ void	check_map_rectangle(t_data *img);
 void	check_map_name(t_data *img);
 void	map_to_array(t_data *img);
 void	draw_map(t_data *img);
+void	convert_data(t_data *img, int index, int data);
 void	search_collectibles(t_data *img, char z);
 void	top_line(t_data *img);
 void	middle_line(t_data *img);

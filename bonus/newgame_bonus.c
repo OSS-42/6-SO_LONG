@@ -6,11 +6,23 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/28 16:42:33 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:55:48 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	convert_data(t_data *img, int index, int data)
+{
+	char	*str;
+
+	str = ft_itoa(data);
+	if (index == 1)
+		mlx_string_put(img->mlx, img->mlx_win, 80, 0, 0x00FF0000, str);
+	else if (index == 2)
+		mlx_string_put(img->mlx, img->mlx_win, 80, 25, 0x6922ff, str);
+	free (str);
+}
 
 int	errors(t_data *img)
 {
@@ -63,7 +75,7 @@ void	newgame(t_data *img)
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64 + 50), "A Day in 42 Quebec");
 	img->moves = 0;
-	img->collectibles = 0;
+	img->collect = 0;
 	srand((unsigned) time(&t));
 	init_level(img);
 	init_player(img);
