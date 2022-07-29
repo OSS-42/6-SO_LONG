@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/28 16:04:34 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:17:42 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static void	check_fd(t_data *img, int fd)
 	}
 	img->lines = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		img->error_code = 1;
+		errors(img);
+	}
 	while (line)
 	{
 		img->lines++;

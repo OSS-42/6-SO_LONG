@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/28 16:43:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 08:57:47 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	print_moves(t_data *img)
 {
 	mlx_clear_window(img->mlx, img->mlx_win);
 	draw_map(img);
-	printf("%d\n", img->p_dir);
 	if (img->p_dir == 2)
 		mlx_put_image_to_window(img->mlx, img->mlx_win,
 			img->player->p_left, img->player_x * 64, img->player_y * 64 + 50);

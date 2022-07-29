@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/27 14:18:36 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/07/29 11:11:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	newgame(t_data *img)
 	img->collectibles = 0;
 	init_level(img);
 	init_player(img);
+	img->p_dir = 1;
 	mlx_hook(img->mlx_win, 17, 0, endgame, img);
 	mlx_hook(img->mlx_win, 02, 0, key_hook, img);
 	mlx_loop(img->mlx);
