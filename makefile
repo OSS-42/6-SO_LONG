@@ -19,8 +19,15 @@ LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
 #SOURCES
-SRC = so_long.c newgame.c init_assets.c init_player.c player_moves.c draw_map.c \
-		check_map.c newgame_utils.c
+SRC = so_long.c\
+	  newgame.c\
+	  init_assets.c\
+	  init_player.c\
+	  player_moves.c\
+	  draw_map.c \
+	  check_map.c\
+	  end_of_game.c\
+	  free_all.c
 SRC_BONUS = bonus/so_long_bonus.c\
 			bonus/newgame_bonus.c\
 			bonus/init_assets_bonus.c\
@@ -30,7 +37,8 @@ SRC_BONUS = bonus/so_long_bonus.c\
 			bonus/check_map_bonus.c\
 			bonus/init_enemy_bonus.c\
 			bonus/enemy_moves_bonus.c\
-			bonus/newgame_utils_bonus.c
+			bonus/end_of_game_bonus.c\
+			bonus/free_all_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)

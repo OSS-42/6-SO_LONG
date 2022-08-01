@@ -48,7 +48,7 @@ int	errors(t_data *img)
 		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
 	else if (img->error_code == 10)
 		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
-	free_map(img);
+	free_all(img);
 	exit (1);
 }
 

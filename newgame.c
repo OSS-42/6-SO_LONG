@@ -36,7 +36,7 @@ int	errors(t_data *img)
 		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
 	else if (img->error_code == 10)
 		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
-	free_map(img);
+	free_all(img);
 	exit (1);
 }
 
@@ -65,7 +65,7 @@ void	newgame(t_data *img)
 	init_level(img);
 	init_player(img);
 	img->p_dir = 1;
-	mlx_hook(img->mlx_win, 17, 0, endgame, img);
+	mlx_hook(img->mlx_win, 17, 0,quit_game, img);
 	mlx_hook(img->mlx_win, 02, 0, key_hook, img);
 	mlx_loop(img->mlx);
 }

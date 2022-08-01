@@ -105,7 +105,7 @@ void	check_map(t_data *img)
 	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
 		img->error_code = 1;
-	if (img->lenght <= 4 || img->lines <= 3)
+	else if (img->lenght <= 4 || img->lines <= 3)
 		img->error_code = 2;
 	errors(img);
 	check_map_walls(img);

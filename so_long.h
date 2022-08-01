@@ -90,7 +90,7 @@ void	go_up(t_data *img);
 void	go_down(t_data *img);
 void	go_left(t_data *img);
 void	go_right(t_data *img);
-void	free_map(t_data *img);
+void	free_all(t_data *img);
 int		endgame(t_data *img);
 int		quit_game(t_data *img);
 

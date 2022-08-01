@@ -35,7 +35,7 @@ static void	check_fd(t_data *img, int fd)
 		free (line);
 		line = get_next_line(fd);
 	}
-	close(fd);
+	close (fd);
 }
 
 void	check_map_name(t_data *img)
@@ -58,7 +58,7 @@ void	map_to_array(t_data *img)
 	fd = open(img->argv, O_RDONLY);
 	check_fd(img, fd);
 	fd = open(img->argv, O_RDONLY);
-	img->map = (char **)malloc(sizeof(char *) * (img->lines + 1));
+	img->map = (char **)malloc(sizeof(char *) * img->lines + 1);
 	x = 0;
 	while (1)
 	{
