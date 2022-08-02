@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:18:11 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 11:29:01 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ typedef struct s_data
 	int			nbr_enemy;
 	void		*enemy;
 	int			random_dir;
+	t_enemy		*frames;
 	t_player	*player;	
 	t_level		*lvl1;
-	t_enemy		*frames;
 }	t_data;
 
 void	newgame(t_data *img);
@@ -115,7 +115,7 @@ void	enemy_go_right(t_data *img);
 void	free_map(t_data *img);
 void	free_all(t_data *img);
 int		endgame(t_data *img);
-void	endgame_bad(t_data *img);
 int		quit_game(t_data *img);
+void	endgame_bad(t_data *img);
 
 #endif

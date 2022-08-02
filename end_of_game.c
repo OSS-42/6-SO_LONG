@@ -6,18 +6,11 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 09:53:50 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 11:21:43 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	quit_game(t_data *img)
-{
-	printf("%s\n", "Au revoir !");
-	free_all(img);
-	exit (0);
-}
 
 int	endgame(t_data *img)
 {
@@ -27,3 +20,12 @@ int	endgame(t_data *img)
 	free_all(img);
 	exit (0);
 }
+
+int	quit_game(t_data *img)
+{
+	printf("%s\n", "Au revoir !");
+	free_all(img);
+	exit (0);
+}
+
+

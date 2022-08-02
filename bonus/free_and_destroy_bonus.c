@@ -6,11 +6,26 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:00:49 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:29:19 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 11:22:29 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	free_map(t_data *img)
+{
+	int	x;
+
+	if (img->error_code == 7 || img->error_code == 8 || img->error_code == 9)
+		exit (0);
+	x = 0;
+	while (x < img->lines)
+	{
+		free (img->map[x]);
+		x++;
+	}
+	exit (0);
+}
 
 static void	destroy_and_free_level(t_data *img)
 {
@@ -35,21 +50,6 @@ static void	destroy_and_free_player(t_data *img)
 	mlx_destroy_image(img->mlx, img->player->p_right);
 	mlx_destroy_image(img->mlx, img->player->p_left);
 	free (img->player);
-}
-
-void	free_map(t_data *img)
-{
-	int	x;
-
-	if (img->error_code == 7 || img->error_code == 8 || img->error_code == 9)
-		exit (0);
-	x = 0;
-	while (x < img->lines)
-	{
-		free (img->map[x]);
-		x++;
-	}
-	exit (0);
 }
 
 static void	destroy_and_free_enemy(t_data *img)

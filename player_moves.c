@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 16:33:55 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 12:01:45 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 11:24:55 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	go_up(t_data *img)
 		}
 		img->player_y = img->player_y - 1;
 		img->moves = img->moves + 1;
-		img->p_dir = 1;
 		printf("%d\n", img->moves);
+		img->p_dir = 1;
 		print_moves(img);
 	}	
 }
@@ -62,8 +62,8 @@ void	go_down(t_data *img)
 		}
 		img->player_y = img->player_y + 1;
 		img->moves = img->moves + 1;
-		img->p_dir = 1;
 		printf("%d\n", img->moves);
+		img->p_dir = 1;
 		print_moves(img);
 	}	
 }
