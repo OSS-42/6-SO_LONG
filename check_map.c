@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 10:29:14 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 10:56:57 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:50:24 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	check_map_walls(t_data *img)
 			{
 				if (img->map[x][y] != '1')
 					img->error_code = 4;
+				errors(img);
 				y++;
 			}
 		}
@@ -74,10 +75,10 @@ void	check_map_walls(t_data *img)
 		{
 			if (img->map[x][0] != '1' || img->map[x][img->lenght - 2] != '1')
 				img->error_code = 5;
+			errors(img);
 		}
 		x++;
 	}
-	errors(img);
 }
 
 void	check_map_char(t_data *img)
@@ -105,10 +106,10 @@ void	check_map(t_data *img)
 	img->lenght = ft_strlen(img->map[0]);
 	if (img->map[0][0] == '\0')
 		img->error_code = 1;
-	else if (img->lenght <= 4 || img->lines <= 3)
+	else if (img->lenght <= 4 || img->lines < 3)
 		img->error_code = 2;
 	errors(img);
+	check_map_rectangle(img);
 	check_map_walls(img);
 	check_map_char(img);
-	check_map_rectangle(img);
 }
