@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 15:50:50 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 16:18:49 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@
 //donc dans img->map[x][y] (classique), x = img->player_y et y = img->player_x
 //attention au 0 dans les 2 cas.
 
+static void	check_doubles(t_data *img, char z, int x, int y)
+{
+	if (z == 'C' && img->map[x][y] == z)
+	{
+		img->total_c++;
+		img->char_check = 1;
+	}
+	else if (z == 'P' && img->map[x][y] == z)
+	{
+		img->char_p++;
+		img->char_check = 2;
+	}
+	else if (z == 'E' && img->map[x][y] == z)
+	{
+		img->char_e++;
+		img->char_check = 3;
+	}
+	return ;
+}
+
 void	search_collectibles(t_data *img, char z)
 {
 	int	x;
@@ -23,28 +43,14 @@ void	search_collectibles(t_data *img, char z)
 
 	img->char_check = 0;
 	img->char_p = 0;
-	x = 0;
 	img->total_c = 0;
+	x = 0;
 	while (x < img->lines - 1)
 	{
 		y = 0;
 		while (img->map[x][y])
 		{
-			if (z == 'C' && img->map[x][y] == z)
-			{
-				img->total_c++;
-				img->char_check = 1;
-			}
-			else if (z == 'P' && img->map[x][y] == z)
-			{
-				img->char_p++;
-				img->char_check = 2;
-			}
-			else if (z == 'E' && img->map[x][y] == z)
-			{
-				img->char_e++;
-				img->char_check = 3;
-			}
+			check_doubles(img, z, x, y);
 			y++;
 		}
 		x++;
