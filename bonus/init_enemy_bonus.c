@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 11:35:27 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 11:45:38 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ static void	random_start(t_data *img)
 		img->enemy_y = 1;
 	else
 		img->enemy_y = rand() % (img->lines - 2);
-	printf("lines :%d\n", img->lines);
-	printf("enemy x:%d\n", img->enemy_x);
-	printf("enemy y:%d\n", img->enemy_y);
 	if (img->map[img->enemy_y][img->enemy_x] == '1'
 		|| img->map[img->enemy_y][img->enemy_x] == 'P')
 		random_start(img);
