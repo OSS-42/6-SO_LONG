@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:55:48 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:18:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	convert_data(t_data *img, int index, int data)
 	free (str);
 }
 
-int	errors(t_data *img)
+void	errors(t_data *img)
 {
 	if (img->error_code == 0)
-		return (0);
+		return ;
 	else if (img->error_code == 1)
 		printf("%s\n%s\n", "Error", "Il n'y a pas de carte");
 	else if (img->error_code == 2)
@@ -48,8 +48,7 @@ int	errors(t_data *img)
 		printf("%s\n%s\n", "Error", "Mauvais nombre d'arguments");
 	else if (img->error_code == 10)
 		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
-	free_all(img);
-	exit (1);
+	free_map(img);
 }
 
 int	key_hook(int keycode, t_data *img)

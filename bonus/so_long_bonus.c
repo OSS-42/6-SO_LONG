@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:51:33 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:26:04 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 	img.error_code = 0;
 	if (argc != 2)
 		img.error_code = 9;
+	errors(&img);
 	img.argv = argv[1];
 	check_map_name(&img);
 	map_to_array(&img);

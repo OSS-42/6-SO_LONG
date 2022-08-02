@@ -27,7 +27,7 @@ SRC = so_long.c\
 	  draw_map.c \
 	  check_map.c\
 	  end_of_game.c\
-	  free_all.c
+	  free_and_destroy.c
 SRC_BONUS = bonus/so_long_bonus.c\
 			bonus/newgame_bonus.c\
 			bonus/init_assets_bonus.c\
@@ -38,7 +38,7 @@ SRC_BONUS = bonus/so_long_bonus.c\
 			bonus/init_enemy_bonus.c\
 			bonus/enemy_moves_bonus.c\
 			bonus/end_of_game_bonus.c\
-			bonus/free_all_bonus.c
+			bonus/free_and_destroy_bonus.c
 
 OBJ = $(SRC:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
@@ -51,9 +51,9 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 #$(V).SILENT:
 
-all:	$(DIR_LIBFT)/$(LIBFT) $(NAME)
+all:	$(NAME)
 
-$(NAME):	$(OBJ) $(SRC)
+$(NAME):	$(DIR_LIBFT)/$(LIBFT) $(OBJ) $(SRC)
 	$(CC) $(CFLAGS) $(OBJ) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
 #	$(CC) $(CFLAGS) $(OBJ) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME) $(LDIR)$(LIBFT)
@@ -65,7 +65,7 @@ $(DIR_LIBFT)/$(LIBFT):
 	make -C $(DIR_LIBFT)
 	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
-$(NAME_BONUS): $(OBJ_BONUS) $(SRC_BONUS)
+$(NAME_BONUS): $(DIR_LIBFT)/$(LIBFT) $(OBJ_BONUS) $(SRC_BONUS)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
 
