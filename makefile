@@ -58,7 +58,6 @@ $(NAME):	$(DIR_LIBFT)/$(LIBFT) $(OBJ) $(SRC)
 	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
 #	$(CC) $(CFLAGS) $(OBJ) -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz -o $(NAME) $(LDIR)$(LIBFT)
 #	@echo "$(LGREEN)MLX  pour Linux ready !$(DEF_COLOR)"
-#	$(AR) $(NAME) $(OBJ)
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
 $(DIR_LIBFT)/$(LIBFT):

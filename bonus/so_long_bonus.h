@@ -6,13 +6,12 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 11:29:01 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 15:51:08 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-//# include "includes/mlx/mlx.h"
 # include <mlx.h>
 # include "../includes/libft/libft.h"
 # include <stdio.h>
@@ -61,6 +60,9 @@ typedef struct s_data
 	char		**map;
 	char		*argv;
 	int			error_code;
+	int			char_check;
+	int			char_p;
+	int			char_e;
 	int			width;
 	int			height;
 	int			lines;

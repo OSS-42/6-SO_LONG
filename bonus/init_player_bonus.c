@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 11:44:23 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 15:50:50 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	search_collectibles(t_data *img, char z)
 {
 	int	x;
 	int	y;
-	int	w;
 
-	w = 0;
+	img->char_check = 0;
+	img->char_p = 0;
 	x = 0;
 	img->total_c = 0;
 	while (x < img->lines - 1)
@@ -33,16 +33,26 @@ void	search_collectibles(t_data *img, char z)
 			if (z == 'C' && img->map[x][y] == z)
 			{
 				img->total_c++;
-				w = 1;
+				img->char_check = 1;
 			}
-			else if (img->map[x][y] == z)
-				w = 2;
+			else if (z == 'P' && img->map[x][y] == z)
+			{
+				img->char_p++;
+				img->char_check = 2;
+			}
+			else if (z == 'E' && img->map[x][y] == z)
+			{
+				img->char_e++;
+				img->char_check = 3;
+			}
 			y++;
 		}
 		x++;
 	}
-	if ((z == 'C' && img->total_c == 0) || w == 0)
+	if ((z == 'C' && img->total_c == 0) || img->char_check == 0)
 		img->error_code = 10;
+	else if (z == 'P' && img->char_p > 1)
+		img->error_code = 11;
 }
 
 static int	search_start(char *string, char c)
