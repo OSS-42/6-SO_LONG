@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:15:53 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:29:34 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	newgame(t_data *img)
 	init_level(img);
 	init_player(img);
 	img->p_dir = 1;
-	mlx_hook(img->mlx_win, 17, 0,quit_game, img);
+	mlx_hook(img->mlx_win, 17, 0, quit_game, img);
 	mlx_hook(img->mlx_win, 02, 0, key_hook, img);
 	mlx_loop(img->mlx);
 }

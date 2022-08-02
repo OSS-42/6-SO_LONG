@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:00:49 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:17:14 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/02 10:29:19 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	destroy_and_free_player(t_data *img)
 void	free_map(t_data *img)
 {
 	int	x;
-	
+
 	if (img->error_code == 7 || img->error_code == 8 || img->error_code == 9)
 		exit (0);
 	x = 0;
