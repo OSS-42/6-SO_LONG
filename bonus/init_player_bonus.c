@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:54:16 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 16:18:49 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:46:46 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static void	init_images(t_data *img)
 void	init_player(t_data *img)
 {
 	img->player = malloc(sizeof(t_player));
+	if (!img->player)
+		return ;
 	img->player_y = 1;
 	while (img->player_y < img->lines - 1)
 	{

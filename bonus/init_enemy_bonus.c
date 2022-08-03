@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 15:22:53 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 11:45:38 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:47:34 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	init_enemy(t_data *img)
 
 	random_start(img);
 	img->frames = malloc(sizeof(t_enemy));
+	if (!img->frames)
+		return ;
 	img->frames->frame_enemy = 0;
 	img->frames->frame = 0;
 	img->frames->enemy_pic[0] = mlx_xpm_file_to_image(img->mlx,

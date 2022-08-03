@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 14:25:27 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/07/29 12:56:42 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:47:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	init_level(t_data *img)
 	int		img_height;
 
 	img->lvl1 = malloc(sizeof(t_level));
+	if (!img->lvl1)
+		return ;
 	img->lvl1->floor = mlx_xpm_file_to_image(img->mlx,
 			"assets/tile_floor.xpm", &img_width, &img_height);
 	img->lvl1->pilar = mlx_xpm_file_to_image(img->mlx,

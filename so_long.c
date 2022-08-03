@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:26:07 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 10:45:44 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	map_to_array(t_data *img)
 	check_fd(img, fd);
 	fd = open(img->argv, O_RDONLY);
 	img->map = (char **)malloc(sizeof(char *) * img->lines + 1);
+	if (!img->map)
+		return ;
 	x = 0;
 	while (1)
 	{
