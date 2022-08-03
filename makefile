@@ -1,5 +1,4 @@
 #VARIABLES
-
 NAME = so_long
 NAME_BONUS = so_long_bonus
 
@@ -69,6 +68,110 @@ $(NAME_BONUS): $(DIR_LIBFT)/$(LIBFT) $(OBJ_BONUS) $(SRC_BONUS)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
 
 bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)
+
+tests:	all
+	@echo ""
+	@echo "---==== VERSION MANDATOIRE ====---"
+	@echo ""
+	@echo "Vous ne devriez voir que des erreurs. Si une carte/jeu se load, c'est un fail"
+	@echo ""
+	@echo "Test FD en problème"
+	./$(NAME) maps/mip.ber
+	@echo ""
+	@echo "Nombre d'arguments en problème"
+	./$(NAME) maps/map.ber maps/map1.ber
+	@echo ""
+	@echo "Nom de fichier en problème"
+	./$(NAME) maps/map.bert
+	@echo ""
+	@echo "Carte inexistante (NULL)"
+	./$(NAME) maps/null.ber
+	@echo ""
+	@echo "Carte trop petite"
+	./$(NAME) maps/too_small.ber
+	@echo ""
+	@echo "Carte avec mauvais caractère (test 1)"
+	./$(NAME) maps/bad.ber
+	@echo ""
+	@echo "Carte avec mauvais caractère (test 2)"
+	./$(NAME) maps/bad1.ber
+	@echo ""
+	@echo "Carte pas rectangle"
+	./$(NAME) maps/bad2.ber
+	@echo ""
+	@echo "Carte problème de mur (test 1)"
+	./$(NAME) maps/bad3.ber
+	@echo ""
+	@echo "Carte problème de mur (test 2)"
+	./$(NAME) maps/bad4.ber
+	@echo ""
+	@echo "Carte problème de mur (test 3)"
+	./$(NAME) maps/bad5.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 1 - P)"
+	./$(NAME) maps/bad6.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 2 - E)"
+	./$(NAME) maps/bad7.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 3 - C)"
+	./$(NAME) maps/bad8.ber
+	@echo ""
+	@echo "Carte doublon (P)"
+	./$(NAME) maps/bad9.ber
+	@echo ""
+
+btests : bonus
+	@echo ""
+	@echo "---==== VERSION BONUS ====---"
+	@echo ""
+	@echo "Vous ne devriez voir que des erreurs. Si une carte/jeu se load, c'est un fail"
+	@echo ""
+	@echo "Test FD en problème"
+	./$(NAME) maps/mip.ber
+	@echo ""
+	@echo "Nombre d'arguments en problème"
+	./$(NAME) maps/map.ber maps/map1.ber
+	@echo ""
+	@echo "Nom de fichier en problème"
+	./$(NAME) maps/map.bert
+	@echo ""
+	@echo "Carte inexistante (NULL)"
+	./$(NAME) maps/null.ber
+	@echo ""
+	@echo "Carte trop petite"
+	./$(NAME) maps/too_small.ber
+	@echo ""
+	@echo "Carte avec mauvais caractère (test 1)"
+	./$(NAME) maps/bad.ber
+	@echo ""
+	@echo "Carte avec mauvais caractère (test 2)"
+	./$(NAME) maps/bad1.ber
+	@echo ""
+	@echo "Carte pas rectangle"
+	./$(NAME) maps/bad2.ber
+	@echo ""
+	@echo "Carte problème de mur (test 1)"
+	./$(NAME) maps/bad3.ber
+	@echo ""
+	@echo "Carte problème de mur (test 2)"
+	./$(NAME) maps/bad4.ber
+	@echo ""
+	@echo "Carte problème de mur (test 3)"
+	./$(NAME) maps/bad5.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 1 - P)"
+	./$(NAME) maps/bad6.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 2 - E)"
+	./$(NAME) maps/bad7.ber
+	@echo ""
+	@echo "Carte caractère manquant (test 3 - C)"
+	./$(NAME) maps/bad8.ber
+	@echo ""
+	@echo "Carte doublon (P)"
+	./$(NAME) maps/bad9.ber
+	@echo ""
 
 clean:
 	$(RM) $(OBJ)
