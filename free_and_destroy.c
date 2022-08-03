@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 09:00:07 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 10:29:56 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:44:31 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	free_map(t_data *img)
 {
 	int	x;
 
-	if (img->error_code == 7 || img->error_code == 8 || img->error_code == 9)
+	if (img->error_code == 7 || img->error_code == 8 || img->error_code == 9
+		|| img->error_code == 12)
 		exit (0);
 	x = 0;
 	while (x < img->lines)

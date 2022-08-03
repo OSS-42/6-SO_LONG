@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/03 10:45:44 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:50:01 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,15 @@ static void	check_fd(t_data *img, int fd)
 void	check_map_name(t_data *img)
 {
 	char	*filename;
+	int		fd;
 
+	fd = open(img->argv, O_DIRECTORY);
+	if (fd > 0)
+	{
+		close(fd);
+		img->error_code = 12;
+		errors(img);
+	}
 	filename = ft_strrchr(img->argv, '.');
 	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
 	{

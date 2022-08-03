@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/02 14:08:19 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/03 14:44:09 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	errors(t_data *img)
 		printf("%s\n%s\n", "Error", "Carte incomplète (P, E, C manquant)");
 	else if (img->error_code == 11)
 		printf("%s\n%s\n", "Error", "Doublon (P)");
+	else if (img->error_code == 12)
+		printf("%s\n%s\n", "Error", "Ce n'est pas un fichier, mais un répertoire");
 	free_map(img);
 }
 
