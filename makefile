@@ -66,6 +66,7 @@ $(DIR_LIBFT)/$(LIBFT):
 $(NAME_BONUS): $(DIR_LIBFT)/$(LIBFT) $(OBJ_BONUS) $(SRC_BONUS)
 	$(CC) $(CFLAGS) $(OBJ_BONUS) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
+	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
 bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)
 
