@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 10:11:33 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/03 14:50:01 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:47:57 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ void	check_map_name(t_data *img)
 		errors(img);
 	}
 	filename = ft_strrchr(img->argv, '.');
+	if (filename == NULL)
+	{
+		img->error_code = 8;
+		errors(img);
+	}
 	if (ft_strncmp(filename, ".ber", ft_strlen(filename)) != 0)
 	{
 		img->error_code = 8;
