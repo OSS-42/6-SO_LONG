@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:47:12 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/03 14:44:09 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/11/23 00:23:38 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	key_hook(int keycode, t_data *img)
 
 void	newgame(t_data *img)
 {
-	img->mlx = mlx_init();
+	img->mlx = mlx_init(img->lenght - 1 *64, img->lines *64, "A day in 42 QC", 1);
 	img->mlx_win = mlx_new_window(img->mlx, ((img->lenght - 1) * 64),
 			(img->lines * 64), "A Day in 42 Quebec");
 	img->moves = 0;
