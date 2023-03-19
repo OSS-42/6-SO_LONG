@@ -11,3 +11,4 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/xDeadpoolx/6-SO_LONG?style=for-the-badge)
 
 Re-Design of 42 Quebec school floor.
+Use of MiniLibX.
