@@ -6,14 +6,14 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 12:25:23 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/11/23 00:17:43 by ewurstei         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:06:31 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-//# include <mlx.h>
-# include "MLX42/include/MLX42/MLX42.h"
+# include <mlx.h>
+// # include "MLX42/include/MLX42/MLX42.h"
 # include "includes/libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>

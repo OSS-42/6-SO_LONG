@@ -44,19 +44,19 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 .c.o :
 #Pour MacOs
-#	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
 #Pour Linux
-	$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
+#	$(CC) $(CFLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
 #$(V).SILENT:
 
 all:	$(NAME)
 
 $(NAME):	$(DIR_LIBFT)/$(LIBFT) $(OBJ) $(SRC)
-#	$(CC) $(CFLAGS) $(OBJ) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
-#	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
-	$(CC) $(CFLAGS) $(OBJ) -L/usr/lib -ldl -lglfw -pthread -lm $(LDIR)$(LIBFT) MLX42/libmlx42.a -o $(NAME)
-	@echo "$(LGREEN)MLX  pour Linux ready !$(DEF_COLOR)"
+	$(CC) $(CFLAGS) $(OBJ) -L /usr/local/lib/ mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME) $(DIR_LIBFT)$(LIBFT)
+	@echo "$(LGREEN)MLX pour MACOs ready !$(DEF_COLOR)"
+#	$(CC) $(CFLAGS) $(OBJ) -L/usr/lib -ldl -lglfw -pthread -lm $(LDIR)$(LIBFT) MLX42/libmlx42.a -o $(NAME)
+#	@echo "$(LGREEN)MLX  pour Linux ready !$(DEF_COLOR)"
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
 $(DIR_LIBFT)/$(LIBFT):
@@ -64,7 +64,7 @@ $(DIR_LIBFT)/$(LIBFT):
 	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
 $(NAME_BONUS): $(DIR_LIBFT)/$(LIBFT) $(OBJ_BONUS) $(SRC_BONUS)
-	$(CC) $(CFLAGS) $(OBJ_BONUS) -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -L /usr/local/lib/ mlx/libmlx.a -framework OpenGL -framework AppKit -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
 	@echo "$(LGREEN)MLX et bonus pour MACOs ready !$(DEF_COLOR)"
 	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
 
