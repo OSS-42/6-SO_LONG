@@ -1,6 +1,6 @@
 # 6-SO_LONG
 
-![SO_LONG](https://github.com/byaliego/42-project-badges/blob/main/badges/so_long-bonus.png)
+![SO_LONG](https://github.com/byaliego/42-project-badges/blob/main/badges/so_longm.png)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/xDeadpoolx/6-SO_LONG?style=for-the-badge)
 
