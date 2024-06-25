@@ -10,6 +10,8 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/xDeadpoolx/6-SO_LONG?style=for-the-badge)
 
+<img src="./assets/so_long.png" width="300">
+
 Re-Design of 42 Quebec school floor.
 
 Use of MiniLibX.
